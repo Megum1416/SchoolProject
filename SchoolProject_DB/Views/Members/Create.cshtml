@@ -1,0 +1,283 @@
+﻿@model SchoolProject_DB.Models.Members
+
+@{
+    ViewData["Title"] = "創建會員資料";
+}
+
+<h2 style="display: inline;"><strong>@ViewData["Title"]</strong></h2>
+<h5 style="display: inline; margin-left: 10px; color:red;">*為必填欄位</h5>
+
+<br />
+
+<div class="row">
+    <div class="col-md-6 mt-3">
+
+        <!-- 創建會員的表單 -->
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <!-- 隱藏的會員ID欄位，讓使用者無法修改 -->
+            <input type="hidden" asp-for="MemberID" value="@ViewBag.NewMemberID" />
+
+            <div class="row ">
+                <!-- Email輸入欄位 -->
+                <div class="col-md-6 ">
+                    <div class="form-group">
+                        <label asp-for="Email" class="form-label">電子郵件、帳號（送出後無法修改）*</label>
+                        <input asp-for="Email" class="form-control" autocomplete="username" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                </div>
+                <!-- 密碼輸入欄位 -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Password" class="form-label">密碼*</label>
+                        <input asp-for="Password" class="form-control" autocomplete="current-password" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-3">
+                <!-- 使用者名稱輸入欄位 -->
+                <div class="col-md-6 ">
+                    <div class="form-group">
+                        <label asp-for="UserName" class="form-label">顯示暱稱*</label>
+                        <input asp-for="UserName" class="form-control" autocomplete="off" />
+                        <span asp-validation-for="UserName" class="text-danger"></span>
+                    </div>
+                </div>
+                <!-- Lodestone ID輸入欄位 -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="LodestoneID" class="form-label">Lodestone（送出後無法修改）*</label>
+                        <input asp-for="LodestoneID" class="form-control" id="LodestoneID" />
+                        <span asp-validation-for="LodestoneID" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <br />
+            <br />
+            <h2 style="display: inline;"><strong>角色資訊</strong></h2>
+            <h5 style="display: inline; margin-left: 10px;">可按下方抓取按鈕自動讀取Lodestone資料</h5>
+
+
+            <!-- 以下欄位將由爬蟲自動填充 -->
+            <div class="row mt-3">
+                <!-- 姓氏輸入欄位 -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="FamilyName" class="form-label">FamilyName*</label>
+                        <input asp-for="FamilyName" class="form-control" id="FamilyName" />
+                        <span asp-validation-for="FamilyName" class="text-danger"></span>
+                    </div>
+                </div>
+                <!-- 名字輸入欄位 -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="FirstName" class="form-label">FirstName*</label>
+                        <input asp-for="FirstName" class="form-control" id="FirstName" />
+                        <span asp-validation-for="FirstName" class="text-danger"></span>
+                    </div>
+                </div>                
+            </div>
+
+            <div class="row mt-3">
+                <!-- 數據中心輸入欄位 -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="DataCenter" class="form-label">DataCenter*</label>
+                        <input asp-for="DataCenter" class="form-control" id="DataCenter" />
+                        <span asp-validation-for="DataCenter" class="text-danger"></span>
+                    </div>
+                </div>
+                <!-- 伺服器名稱輸入欄位 -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="ServerName" class="form-label">ServerName*</label>
+                        <input asp-for="ServerName" class="form-control" id="ServerName" />
+                        <span asp-validation-for="ServerName" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <br />
+
+            <!-- 按鈕1和按鈕2: 用於抓取FirstName, FamilyName, DataCenter, ServerName和角色照片 -->
+            <div class="btn-group w-100" role="group" aria-label="Fetch buttons group">
+                <button type="button" class="btn btn-outline-secondary w-50" id="fetchInfoButton">抓取角色資訊</button>
+                <button type="button" class="btn btn-outline-secondary w-50" id="fetchPhotoButton">抓取角色圖片</button>
+            </div>
+
+            <!-- 用於顯示錯誤訊息 -->
+            <div class="form-group mt-2">
+                <div id="infoErrorMessage" class="text-danger" style="display:none;"></div>
+                <div id="photoErrorMessage" class="text-danger" style="display:none;"></div>
+            </div>
+
+
+            <div class="row align-items-center mt-3">
+                <label asp-for="Photos" class="form-label"></label>
+                <!-- 使用者可上傳自己的照片 -->
+                <div class="col-md-9">
+                    <div class="form-group">
+                        <input type="file" name="uploadPhoto" id="uploadPhoto" class="form-control" />
+                        <span>@ViewData["Message"]</span>
+                    </div>
+                </div>
+                <!-- 清除上傳檔案的按鈕 -->
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <button type="button" class="btn btn-secondary" id="clearFileButton">
+                            <i class="bi bi-trash3-fill fs-6"></i> 清除檔案
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <br /><br />
+
+
+            <!-- 提交表單按鈕 -->
+            <div class="form-group btn-group w-100">
+                <input type="submit" value="確定創建" class="btn btn-outline-primary  w-50" />
+                <a asp-action="Index" class="btn btn-outline-dark  w-50">回上一頁</a>
+            </div>
+
+            <!-- 隱藏欄位，用於保存抓取的圖片URL -->
+            <input type="hidden" id="PhotoUrl" name="PhotoUrl" />
+        </form>
+    </div>
+
+    <!-- 照片預覽部分 -->
+    <div class="col-lg-6" id="photoPreviewContainer">
+
+        <!-- 加載動畫 -->
+        <div id="loadingSpinner" class="spinner-border m-5" role="status" style="display:none;">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+
+        <!-- 照片預覽部分 -->
+        <div id="photoPreview"></div>
+    </div>
+
+
+</div>
+
+@section Scripts {
+    <script>
+        function showLoadingSpinner() {
+            $("#loadingSpinner").show();
+            $("#photoPreview").hide();
+        }
+
+        function hideLoadingSpinner() {
+            $("#loadingSpinner").hide();
+            $("#photoPreview").show();
+        }
+
+        // 當按下 "Fetch Info" 按鈕時，觸發抓取角色基本資訊
+        $("#fetchInfoButton").on("click", function () {
+            var lodestoneID = $("#LodestoneID").val(); // 取得輸入的LodestoneID
+            if (lodestoneID) {
+                showLoadingSpinner(); // 顯示加載動畫
+                $.ajax({
+                    url: `/Members/FetchLodestoneInfo`,
+                    method: "GET",
+                    data: { lodestoneID: lodestoneID },
+                    dataType: "json",
+                    success: function (data) {
+                        if (data) {
+                            // 將回應的資料填充到相應的欄位
+                            $("#FirstName").val(data.firstName);
+                            $("#FamilyName").val(data.familyName);
+                            $("#DataCenter").val(data.dataCenter);
+                            $("#ServerName").val(data.serverName);
+                            $("#infoErrorMessage").hide(); // 成功後隱藏錯誤訊息
+                        }
+                    },
+                    error: function () {
+                        console.log("Error fetching info");
+                        $("#infoErrorMessage").text("資料抓取失敗").show(); // 顯示錯誤訊息
+                    },
+                    complete: function () {
+                        hideLoadingSpinner(); // 隱藏加載動畫
+                    }
+                });
+            }
+        });
+
+        // 當按下 "Fetch Photo" 按鈕時，觸發抓取角色照片
+        $("#fetchPhotoButton").on("click", function () {
+            var lodestoneID = $("#LodestoneID").val(); // 取得輸入的LodestoneID
+            if (lodestoneID) {
+                showLoadingSpinner(); // 顯示加載動畫
+                $.ajax({
+                    url: `/Members/FetchLodestonePhoto`,
+                    method: "GET",
+                    data: { lodestoneID: lodestoneID },
+                    dataType: "json",
+                    success: function (data) {
+                        if (data && data.photoUrl) {
+                            // 動態更新照片預覽
+                            $("#photoPreview").html(`<img src="${data.photoUrl}" width="500" class="img-fluid" />`);
+                            $("#photoErrorMessage").hide(); // 成功後隱藏錯誤訊息
+
+                            // 保存圖片URL到隱藏欄位，便於表單提交
+                            $("#PhotoUrl").val(data.photoUrl);
+                        }
+                    },
+                    error: function () {
+                        console.log("Error fetching photo");
+                        $("#photoErrorMessage").text("圖片抓取失敗").show(); // 顯示錯誤訊息
+                    },
+                    complete: function () {
+                        hideLoadingSpinner(); // 隱藏加載動畫
+                    }
+                });
+            }
+        });
+
+        // 當使用者上傳照片時，觸發顯示照片預覽的邏輯
+        $("#uploadPhoto").on("change", function (event) {
+            var input = event.target;
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                showLoadingSpinner(); // 顯示加載動畫
+                reader.onload = function (e) {
+                    // 更新照片預覽
+                    $("#photoPreview").html(`<img src="${e.target.result}" width="500" class="img-fluid" />`);
+                    hideLoadingSpinner(); // 隱藏加載動畫
+                }
+                reader.readAsDataURL(input.files[0]); // 將照片文件讀取為Data URL
+            }
+        });
+
+        // 當按下 "Clear File" 按鈕時，清除上傳的檔案
+        $("#clearFileButton").on("click", function () {
+            $("#uploadPhoto").val(""); // 清除檔案
+            $("#photoPreview").html(""); // 清空照片預覽
+        });
+
+        // 當頁面載入時，從cookie中讀取MemberID，並設置到隱藏的欄位中
+        window.onload = function () {
+            var memberId = getCookie('NewMemberID');
+            if (memberId) {
+                document.getElementById('MemberID').value = memberId;
+            }
+        };
+
+        // 獲取Cookie的函數
+        function getCookie(name) {
+            let value = "; " + document.cookie;
+            let parts = value.split("; " + name + "=");
+            if (parts.length === 2) return parts.pop().split(";").shift();
+        }
+
+    </script>
+}
+
+@{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial"); // 加載驗證腳本部分
+}

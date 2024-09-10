@@ -1,0 +1,39 @@
+﻿@model IEnumerable<SchoolProject_DB.Models.FollowList>
+
+<h2>目前已追隨的名單</h2>
+
+@if (ViewBag.Message != null)
+
+{
+    <p>@ViewBag.Message</p>
+}
+
+else
+
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>目前追蹤的LodestoneID</th>
+                <th>追蹤時間</th>
+                <th>操作</th> <!-- 新增操作欄 -->
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var follow in Model)
+
+            {
+                <tr>
+                    <td>@follow.LodestoneID</td>
+                    <td>@follow.CreatedAt.ToString("yyyy/MM/dd HH:mm")</td>
+                    <td>
+                        <form asp-action="Delete" method="post">
+                            <input type="hidden" name="id" value="@follow.FollowID" />
+                            <button type="submit" class="btn btn-danger btn-sm">取消追蹤</button>
+                        </form>
+                    </td> <!-- 新增取消追蹤按鈕 -->
+                </tr>
+            }
+        </tbody>
+    </table>
+}

@@ -1,0 +1,47 @@
+﻿@model SchoolProject_DB.Models.Members
+
+@{
+    ViewData["Title"] = "登入畫面";
+}
+
+<h1 class="alert alert-warning text-center" role="alert">@ViewData["Title"]</h1>
+
+@if (ViewData["Error"] != null)
+{
+    <div class="alert alert-danger text-center" role="alert">
+        <h4>@ViewData["Error"]</h4>
+    </div>
+}
+
+<hr />
+
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Login">
+            <div class="mb-3 row">
+                <label asp-for="Email" class="col-sm-2 col-form-label">帳號</label>
+                <div class="col-sm-6">
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label asp-for="Password" class="col-sm-2 col-form-label">密碼</label>
+                <div class="col-sm-6">
+                    <input asp-for="Password" type="password" class="form-control" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="登入" class="btn btn-outline-dark" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

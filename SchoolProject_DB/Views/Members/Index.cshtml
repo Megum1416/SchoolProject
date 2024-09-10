@@ -1,0 +1,47 @@
+﻿@model IEnumerable<SchoolProject_DB.Models.Members>
+
+@{
+    ViewData["Title"] = "會員角色一覽";
+}
+
+<link href="~/css/site.css" rel="stylesheet" />
+
+<h1>會員圖片清單</h1>
+
+@* 只有管理者才能看到這個按鈕 *@
+@if (User.Identity.IsAuthenticated && User.Claims.FirstOrDefault(c => c.Type == "IsAdmin")?.Value == "True")
+
+{
+    <div class="text-end">
+
+        <a asp-action="Create" class="btn btn-primary">暫時的新建資料</a>
+        <form asp-action="ScrapeAllPhotos" method="post" class="d-inline">
+            <button type="submit" class="btn btn-danger">更新所有會員圖片</button>
+        </form>
+
+    </div>
+
+}
+
+<hr />
+
+<div class="container mt-4">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+        @foreach (var item in Model)
+
+        {
+            <div class="col memberIndex-col-item">
+                <div class="memberIndex-image-container">
+                    <a asp-action="Details" asp-route-id="@item.MemberID">
+                        <img src="@Url.Action("GetImage", "Members", new { memberId = item.MemberID })" alt="Member Photo">
+                        <div class="memberIndex-overlay-text">
+                            @item.FamilyName @item.FirstName <br>
+                            @item.DataCenter - @item.ServerName
+                        </div>
+                    </a>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+

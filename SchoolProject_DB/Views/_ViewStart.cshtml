@@ -1,0 +1,18 @@
+﻿@{
+    Layout = "_Layout-Guest"; // 預設給訪客的Layout
+
+    // 檢查使用者是否已登入
+    if (User.Identity.IsAuthenticated) // 如果使用者已登入
+    {
+        var isAdmin = User.Claims.FirstOrDefault(c => c.Type == "IsAdmin")?.Value; // 從Claims中取得IsAdmin的值
+
+        if (isAdmin == "True")
+        {
+            Layout = "_Layout"; // 管理員使用的Layout
+        }
+        else
+        {
+            Layout = "_Layout-Member"; // 一般會員使用的Layout
+        }
+    }
+}

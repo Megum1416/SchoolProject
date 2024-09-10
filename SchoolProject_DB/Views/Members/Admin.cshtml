@@ -1,0 +1,88 @@
+﻿@model IEnumerable<SchoolProject_DB.Models.Members>
+
+@{
+    ViewData["Title"] = "會員管理列表";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
+</p>
+
+<style>
+    .table tr {
+        white-space: nowrap;
+        vertical-align: middle; /* 確保內容垂直置中 */
+    }
+</style>
+
+<table class="table table-hover table-bordered align-middle">
+    <thead class="thead-dark text-center table-light">
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.MemberID)</th>
+            <th>@Html.DisplayNameFor(model => model.UserName)</th>
+            <th>@Html.DisplayNameFor(model => model.LodestoneID)</th>
+            <th>@Html.DisplayNameFor(model => model.FamilyName)</th>
+            <th>@Html.DisplayNameFor(model => model.FirstName)</th>
+            <th>@Html.DisplayNameFor(model => model.DataCenter)</th>
+            <th>@Html.DisplayNameFor(model => model.ServerName)</th>
+            <th>@Html.DisplayNameFor(model => model.CreatedAt)</th>
+            <th>@Html.DisplayNameFor(model => model.UpdatedAt)</th>
+            <th>@Html.DisplayNameFor(model => model.IsAdmin)</th> <!-- 新增 IsAdmin -->
+            <th>管理</th>
+        </tr>
+    </thead>
+    <tbody class="text-center">
+        @foreach (var item in Model)
+
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.MemberID)</td>
+                <td>@Html.DisplayFor(modelItem => item.UserName)</td>
+                <td>@Html.DisplayFor(modelItem => item.LodestoneID)</td>
+                <td>@Html.DisplayFor(modelItem => item.FamilyName)</td>
+                <td>@Html.DisplayFor(modelItem => item.FirstName)</td>
+                <td>@Html.DisplayFor(modelItem => item.DataCenter)</td>
+                <td>@Html.DisplayFor(modelItem => item.ServerName)</td>
+                <td>@Html.DisplayFor(modelItem => item.CreatedAt)</td>
+                <td>@Html.DisplayFor(modelItem => item.UpdatedAt)</td>
+                <td>
+                    <input type="checkbox" class="admin-checkbox" data-id="@item.MemberID" @(item.IsAdmin ? "checked" : "") />
+                </td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.MemberID" class="btn btn-info btn-sm">Details</a>
+                    <a asp-action="Delete" asp-route-id="@item.MemberID" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<!-- Javascript to handle the checkbox click event -->
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $(".admin-checkbox").change(function () {
+                var memberId = $(this).data("id");
+                var isAdmin = $(this).is(":checked");
+
+                $.ajax({
+                    url: '@Url.Action("UpdateIsAdmin", "Members")',
+                    type: 'POST',
+                    data: { id: memberId, isAdmin: isAdmin },
+                    success: function (response) {
+                        if (response.success) {
+                            alert("更新成功！");
+                        } else {
+                            alert("更新失敗！");
+                        }
+                    },
+                    error: function () {
+                        alert("更新失敗！");
+                    }
+                });
+            });
+        });
+    </script>
+}

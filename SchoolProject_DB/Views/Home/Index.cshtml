@@ -1,0 +1,77 @@
+﻿﻿@{
+    Layout = "_Layout-Guest"; // 預設給訪客的Layout
+
+
+
+    // 檢查使用者是否已登入
+
+    if (User.Identity.IsAuthenticated) // 如果使用者已登入
+
+    {
+
+        var isAdmin = User.Claims.FirstOrDefault(c => c.Type == "IsAdmin")?.Value; // 從Claims中取得IsAdmin的值
+
+
+
+        if (isAdmin == "True")
+
+        {
+
+            Layout = "_Layout"; // 管理員使用的Layout
+
+        }
+
+        else
+
+        {
+
+            Layout = "_Layout-Member"; // 一般會員使用的Layout
+
+        }
+
+    }
+}
+
+@{
+    var latestTopics = ViewData["LatestTopics"] as List<(string Title, string ImageUrl, string ArticleUrl)>;
+}
+
+<h1 class="alert alert-secondary text-center" role="alert">最新的 Final Fantasy XIV News</h1>
+
+@if (latestTopics != null && latestTopics.Count > 0)
+
+{
+    <div class="row">
+        @for (int i = 0; i < latestTopics.Count; i++)
+
+        {
+
+            var topic = latestTopics[i];
+
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-sm">
+                    <!-- 將圖片設置為可點擊，並鏈接到官方文章 -->
+                    <a href="@topic.ArticleUrl" target="_blank">
+                        <img class="card-img-top" src="@topic.ImageUrl" alt="新聞圖片" />
+                    </a>
+                    <div class="card-body">
+                        <h5 class="card-title">@Html.Raw(topic.Title)</h5>
+                    </div>
+
+                </div>
+            </div>
+
+            @if ((i + 1) % 3 == 0 && i + 1 < latestTopics.Count)
+
+            {
+                <div class="row"></div> <!-- 每 3 個新聞後換行 -->
+            }
+        }
+    </div> <!-- 最外層 row 的結束標籤 -->
+}
+
+else
+
+{
+    <p>無法獲取最新新聞資訊。</p>
+}
