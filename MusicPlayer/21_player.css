@@ -1,0 +1,245 @@
+body {
+    background-color: rgb(236, 236, 236);
+    background-image: url(images/logo.png);
+    background-repeat: no-repeat;
+    background-size: 200px;
+    /*自動照著視窗大小調整比例*/
+    background-position: right bottom;
+    /*照著視窗大小靠右置底*/
+    background-attachment: fixed;
+    /*使背景圖片在滾動時保持固定*/
+
+}
+
+#all {
+    /*撥放器整體*/
+    background-color: rgba(220, 222, 224, 0.9);
+    /*border: 5px solid rgb(22, 44, 58);*/
+    border-radius: 10px;
+    /*角的弧度*/
+    padding: 20px;
+    /*設定元素內容與元素邊框之間的內距（內邊距）*/
+    width: 700px;
+    /*寬度*/
+    margin: 1em auto;
+    /*靠這個在讓整體置中的*/
+    margin-top: 5%;
+    box-shadow: 0 0 15px rgb(93, 94, 95);
+}
+
+
+/*先預設好給下面抓的*/
+:root {
+    --progress-thumb-appearance: none;
+    --progress-thumb-border-radius: 20%;
+    --progress-thumb-width: 8px;
+    --progress-thumb-height: 5px;
+    --progress-thumb-background-color: rgb(63, 91, 110);
+
+    --vol-thumb-appearance: none;
+    --vol-thumb-border-radius: 20%;
+    --vol-thumb-width: 20px;
+    --vol-thumb-height: 15px;
+    --vol-thumb-background-color: rgb(63, 91, 110);
+}
+
+/*播放清單*/
+#songSelectList {
+
+    width: 100%;
+    font-size: 13pt;
+    font-family: "微軟正黑體";
+    text-align: center;
+    font-weight: bold;
+
+}
+
+#songSelectList>option {
+    font-family: "微軟正黑體";
+    font-size: 13pt;
+}
+
+
+/****************進度條區設定****************/
+/*進度條*/
+#progressBar {
+    appearance: none;
+    height: 5px;
+    width: 100%;
+    margin: 1em auto;
+    background-color: rgb(183, 187, 189);
+    border: 1px solid rgb(163, 165, 167);
+    /*外框線*/
+}
+
+/*進度條上的桿子*/
+#progressBar::-webkit-slider-thumb {
+    appearance: var(--vol-thumb-appearance);
+    border-radius: var(--vol-thumb-border-radius);
+    width: var(--progress-thumb-width);
+    height: var(--progress-thumb-height);
+    background-color: var(--vol-thumb-background-color);
+}
+
+#progressBar::-moz-range-thumb {
+    appearance: var(--vol-thumb-appearance);
+    border-radius: var(--vol-thumb-border-radius);
+    width: var(--progress-thumb-width);
+    height: var(--progress-thumb-height);
+    background-color: var(--vol-thumb-background-color);
+}
+
+/*摸到的時候變大*/
+#progressBar::-webkit-slider-thumb:hover {
+    height: 15px;
+    transition: 0.25s;
+}
+
+#progressBar::-moz-range-thumb:hover {
+    height: 15px;
+    transition: 0.25s;
+}
+
+/****************播放狀態****************/
+#info {
+    text-align: center;
+    font-family: "微軟正黑體";
+}
+
+/****************按鈕設定****************/
+/*按鈕圖片設定*/
+#playbutton img {
+    cursor: pointer;
+    width: 35px;
+    height: auto;
+    margin: 0.5em;
+}
+
+/*按鈕區*/
+#playbutton {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-left: 1em auto;
+    margin-right: 1em auto;
+}
+
+#playbutton div {
+    width: 100%;
+    /* 每個內部 div 占滿一行 */
+    text-align: center;
+    /* 使內部 img 置中 */
+}
+
+/****************音量調整區設定****************/
+#volControl {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 0.2em auto;
+    margin-right: 0.2em auto;
+}
+
+#volControl img {
+    width: 30px;
+    margin: 0.2em;
+}
+
+/*拉桿的底*/
+#volControl>input[type="range"] {
+    appearance: none;
+    border-radius: 5%;
+    height: 7px;
+    border: 1px solid rgb(163, 165, 167);
+    /*外框線*/
+
+    /* background-color: rgb(183, 192, 199); */
+    /* background-image: -webkit-linear-gradient(left, rgb(63, 91, 110) 30%, rgb(198, 202, 204) 30%); */
+}
+
+/*拉桿上的圓圈圈*/
+
+#volControl>input[type="range"]::-webkit-slider-thumb {
+    appearance: var(--vol-thumb-appearance);
+    border-radius: var(--vol-thumb-border-radius);
+    width: var(--vol-thumb-width);
+    height: var(--vol-thumb-height);
+    background-color: var(--vol-thumb-background-color);
+}
+
+#volControl>input[type="range"]::-moz-range-thumb {
+    appearance: var(--vol-thumb-appearance);
+    border-radius: var(--vol-thumb-border-radius);
+    width: var(--vol-thumb-width);
+    height: var(--vol-thumb-height);
+    background-color: var(--vol-thumb-background-color);
+}
+
+/*按鈕*/
+#volControl>input[type="button"] {
+    appearance: none;
+    border-radius: 25%;
+    border: none;
+    width: 25px;
+    height: 20px;
+    box-shadow: 0 0 3px;
+    font-family: "微軟正黑體";
+    margin: 0.2em;
+    text-align: center;
+}
+
+/*按鈕旁顯示的文字方塊*/
+#volControl>input[type="text"] {
+    width: 30px;
+    height: 25px;
+    border-radius: 20%;
+    border: none;
+    background-color: rgb(63, 91, 110);
+    color: aliceblue;
+    text-align: center;
+    font-family: "微軟正黑體";
+    font-weight: bold;
+    margin-left: 0.2em auto;
+    margin-right: 0.2em auto;
+}
+
+#testRange {
+    appearance: none;
+    background-image: -webkit-linear-gradient(left, rgb(197, 103, 132) 30%, rgb(198, 202, 204) 30%);
+}
+
+#book {
+    /* border: 1px solid rgb(38, 34, 241); */
+    display: none;
+    flex-wrap: nowrap;
+    flex-direction: row;
+}
+
+#book>div {
+    /* border: 1px solid red; */
+    height: 125px;
+    width: 350px;
+    overflow: auto;
+}
+
+#book>div>div {
+
+    font-family: "微軟正黑體";
+    border: 2px solid rgba(140, 140, 141, 0);
+}
+
+#bookButton {
+    font-family: "微軟正黑體";
+    margin-top: 5%;
+    margin-left: 44%;
+}
+
+#hideButton {
+    font-family: "微軟正黑體";
+    margin-top: 5%;
+    margin-left: 47%;
+}

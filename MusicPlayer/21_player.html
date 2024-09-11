@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="21_player.css">
+</head>
+
+<body>
+    <!--歌曲-->
+    <audio id="audio"></audio>
+    <div id="all" onclick="eventTarget()">
+        <!--歌曲選單-->
+        <select id="songSelectList" onchange="changeMusic(0)">
+
+        </select>
+        <!--進度條-->
+        <input type="range" id="progressBar" value="0" oninput="setProgress()">
+        <!-- </div> -->
+        <div id="info">
+            <div>正在播放：</div>
+            <div>00:00 / 00:00</div>
+        </div>
+        <hr>
+        <!--控制按鈕區-->
+        <div id="playbutton">
+            <div>
+                <!--上一首-->
+                <img id="lastsong" src="images/next-left.png" onclick="changeMusic(-1)" alt="上一首">
+
+                <!--播放、停止-->
+                <img id="play" src="images/play.png" onclick="playMusic()" alt="播放">
+                <img id="stop" src="images/stop.png" onclick="stopMusic()" alt="停止">
+
+                <!--下一首-->
+                <img id="nextsong" src="images/next-right.png" onclick="changeMusic(1)" alt="下一首">
+            </div>
+            <br><!--換行-->
+            <div>
+                <!--循環-->
+                <img id="loop" src="images/loop-NO.png" onclick="musicLoop()" alt="循環">
+
+                <!--快轉、倒轉-->
+                <img id="back" src="images/add_left.png" onclick="changeTime(-5)" alt="倒轉">
+                <img id="add" src="images/add_right.png" onclick="changeTime(+5)" alt="快轉">
+
+                <!--隨機撥放-未完成-->
+                <img id="ran" src="images/random-off.png" onclick="randomMusic()" alt="隨機">
+
+
+
+            </div>
+        </div>
+        <hr>
+
+        <!--音量調整區-->
+        <div id="volControl">
+
+            <input type="range" value="30" oninput="setVolumebyrange()">
+            <input type="button" value="-" onclick="setVolumebybutton(-1)">
+            <input type="button" value="+" onclick="setVolumebybutton(+1)">
+            <input type="text" value="100" readonly>
+            <!--靜音開關按鈕-->
+            <img id="mute" src="images/mute-OFF.png" onclick="volMute()" alt="靜音">
+
+        </div>
+        <hr>
+        <!--歌本區-->
+
+
+        <div id="book">
+            <div ondrop="drop(event)" ondragover="allowDrop(event)">
+                <div title="music/P1.mp3">P1 - 蒼天騎士團</div>
+                <div title="music/P2.mp3">P2 - 英傑 ～ナイツ･オブ･ラウンド討滅戦～</div>
+                <div title="music/P3.mp3">P3 - 邪竜の急襲 ～ニーズヘッグ征竜戦～</div>
+                <div title="music/P4.mp3">P4 - 闘争</div>
+                <div title="music/P4.5.mp3">P4.5 - 聖座 ～強硬突入 イシュガルド教皇庁～</div>
+                <div title="music/P5.mp3">P5 - Heavensward</div>
+                <div title="music/P6.mp3">P6 - Dragonsong</div>
+                <div title="music/P7.mp3">P7 - 逆襲の咆哮</div>
+            </div>
+            <div ondrop="drop(event)" ondragover="allowDrop(event)">
+
+            </div>
+        </div>
+
+        <div id="bookButton">
+            <button onclick="updateMusicPool()">更新歌單</button>
+        </div>
+
+        <div id="hideButton">
+            <button id="hideB" onclick="showBook()">︾</button>
+
+        </div>
+    </div>
+
+
+    <!--測試區-->
+    <!--<div>
+
+        <input id="testRange" type="range" value="10">
+        <button onclick="test()">按我</button>
+
+    </div> -->
+
+
+    <script src="21_player.js"></script>
+
+
+</body>
+
+</html>
