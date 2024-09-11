@@ -1,0 +1,39 @@
+{
+  "Version": 1,
+  "Hash": "LIrotBa9Uhoc3ZuaxVLMBsP+JCfidgdRoP4Wvw/UDc0=",
+  "Source": "MyWebAPI",
+  "BasePath": "_content/MyWebAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "MyWebAPI\\wwwroot",
+      "Source": "MyWebAPI",
+      "ContentRoot": "F:\\SchoolProject\\MyWebAPI\\MyWebAPI\\wwwroot\\",
+      "BasePath": "_content/MyWebAPI",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "F:\\SchoolProject\\MyWebAPI\\MyWebAPI\\wwwroot\\Members\\Index.html",
+      "SourceId": "MyWebAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "F:\\SchoolProject\\MyWebAPI\\MyWebAPI\\wwwroot\\",
+      "BasePath": "_content/MyWebAPI",
+      "RelativePath": "Members/Index.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Members\\Index.html"
+    }
+  ]
+}
