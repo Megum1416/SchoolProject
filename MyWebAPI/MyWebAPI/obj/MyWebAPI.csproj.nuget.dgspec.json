@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "H:\\SchoolProject\\MyWebAPI\\MyWebAPI\\MyWebAPI.csproj": {}
+    "F:\\SchoolProject\\MyWebAPI\\MyWebAPI\\MyWebAPI.csproj": {}
   },
   "projects": {
-    "H:\\SchoolProject\\MyWebAPI\\MyWebAPI\\MyWebAPI.csproj": {
+    "F:\\SchoolProject\\MyWebAPI\\MyWebAPI\\MyWebAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "H:\\SchoolProject\\MyWebAPI\\MyWebAPI\\MyWebAPI.csproj",
+        "projectUniqueName": "F:\\SchoolProject\\MyWebAPI\\MyWebAPI\\MyWebAPI.csproj",
         "projectName": "MyWebAPI",
-        "projectPath": "H:\\SchoolProject\\MyWebAPI\\MyWebAPI\\MyWebAPI.csproj",
-        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "H:\\SchoolProject\\MyWebAPI\\MyWebAPI\\obj\\",
+        "projectPath": "F:\\SchoolProject\\MyWebAPI\\MyWebAPI\\MyWebAPI.csproj",
+        "packagesPath": "C:\\Users\\lisa9\\.nuget\\packages\\",
+        "outputPath": "F:\\SchoolProject\\MyWebAPI\\MyWebAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\lisa9\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -46,6 +46,20 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[8.0.8, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.8, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[8.0.4, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.4.0, )"
@@ -70,7 +84,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
