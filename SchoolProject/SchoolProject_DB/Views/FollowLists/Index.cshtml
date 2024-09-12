@@ -1,6 +1,12 @@
 ﻿@model IEnumerable<SchoolProject_DB.Models.FollowList>
 
-<h2>目前已追隨的名單</h2>
+@{
+    ViewData["Title"] = "已追隨名單";
+}
+
+
+
+<h1 class="alert alert-secondary text-center" role="alert">@ViewData["Title"]</h1>
 
 @if (ViewBag.Message != null)
 

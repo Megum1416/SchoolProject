@@ -1,12 +1,12 @@
 ﻿@model IEnumerable<SchoolProject_DB.Models.Members>
 
 @{
-    ViewData["Title"] = "會員角色一覽";
+    ViewData["Title"] = "會員一覽";
 }
 
 <link href="~/css/site.css" rel="stylesheet" />
 
-<h1>會員圖片清單</h1>
+<h1 class="alert alert-secondary text-center" role="alert">@ViewData["Title"]</h1>
 
 @* 只有管理者才能看到這個按鈕 *@
 @if (User.Identity.IsAuthenticated && User.Claims.FirstOrDefault(c => c.Type == "IsAdmin")?.Value == "True")

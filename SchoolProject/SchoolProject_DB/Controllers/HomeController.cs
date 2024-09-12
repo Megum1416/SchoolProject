@@ -21,28 +21,8 @@ namespace SchoolProject_DB.Controllers
         public async Task<IActionResult> Index()
         {
             
-            if (User.Identity.IsAuthenticated)
-            {
-                var isAdmin = User.Claims.FirstOrDefault(c => c.Type == "IsAdmin")?.Value;
-
-                if (isAdmin == "True")
-                {
-                    ViewBag.Layout = "_Layout"; 
-                }
-                else
-                {
-                    ViewBag.Layout = "_Layout-Member"; 
-                }
-            }
-            else
-            {
-                ViewBag.Layout = "_Layout-Guest"; 
-            }
-
-            
             var latestTopics = await _topicScraper.ScrapeLatestTopicsAsync();
 
-            
             ViewData["LatestTopics"] = latestTopics;
 
             return View();

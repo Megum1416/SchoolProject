@@ -160,6 +160,8 @@ namespace SchoolProject_DB.Controllers
 
          */
 
+        //這裡的delete action比較適合給管理者在管理所有資料時使用的。
+
         // POST: FollowLists/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -185,31 +187,37 @@ namespace SchoolProject_DB.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-
-
         private bool FollowListExists(string id)
         {
             return _context.FollowList.Any(e => e.FollowID == id);
         }
 
 
+        // 從 Cookie 中取得當前使用者的 MemberID
+        private string GetCurrentUserId()
+        {
+            return Request.Cookies["MemberID"];
+        }
+
+        // 檢查會員是否存在
+        private Members GetFollowedMember(string memberId)
+        {
+            return _context.Members.FirstOrDefault(m => m.MemberID == memberId);
+        }
+
+        //這裡的delete是適合給使用者在操作時的
         [HttpPost]
         public IActionResult Follow(string followedMemberId)
         {
             try
             {
-                // 從 Cookie 取得當前使用者的 MemberID
-                var currentUserId = Request.Cookies["MemberID"];
-
+                var currentUserId = GetCurrentUserId();
                 if (string.IsNullOrEmpty(currentUserId))
                 {
                     return Json(new { success = false, message = "未授權，無法找到有效的 MemberID" });
                 }
 
-                // 找到被追蹤的會員 (MemberID = 00000002)
-                var followedMember = _context.Members
-                    .FirstOrDefault(m => m.MemberID == followedMemberId);
-
+                var followedMember = GetFollowedMember(followedMemberId);
                 if (followedMember == null)
                 {
                     return Json(new { success = false, message = "找不到追蹤的會員。" });
@@ -221,7 +229,7 @@ namespace SchoolProject_DB.Controllers
 
                 if (existingFollow != null)
                 {
-                    // 已經追蹤，則執行刪除操作
+                    // 已經追蹤，則執行取消追蹤操作
                     _context.FollowList.Remove(existingFollow);
                     _context.SaveChanges();
                     return Json(new { success = true, action = "unfollowed" });
@@ -235,24 +243,17 @@ namespace SchoolProject_DB.Controllers
                         .FirstOrDefault();
 
                     // 設置新的 FollowID，預設為 "00000001" 並處理加 1 的邏輯
-                    string newFollowID;
-                    if (string.IsNullOrEmpty(maxFollowID))
-                    {
-                        newFollowID = "00000001"; // 如果沒有任何資料，預設為 "00000001"
-                    }
-                    else
-                    {
-                        int nextFollowID = int.Parse(maxFollowID) + 1; // 取最大 FollowID + 1
-                        newFollowID = nextFollowID.ToString("D8"); // 格式化為 8 位數
-                    }
+                    string newFollowID = string.IsNullOrEmpty(maxFollowID)
+                        ? "00000001"
+                        : (int.Parse(maxFollowID) + 1).ToString("D8");
 
                     // 建立新的 FollowList 資料
                     var newFollow = new FollowList
                     {
-                        FollowID = newFollowID, // 自動生成的 FollowID
-                        MemberID = currentUserId, // 當前登入的使用者
-                        LodestoneID = followedMember.LodestoneID, // 被追蹤會員的 LodestoneID
-                        CreatedAt = DateTime.Now // 當下時間
+                        FollowID = newFollowID,
+                        MemberID = currentUserId,
+                        LodestoneID = followedMember.LodestoneID,
+                        CreatedAt = DateTime.Now
                     };
 
                     _context.FollowList.Add(newFollow);
@@ -267,39 +268,35 @@ namespace SchoolProject_DB.Controllers
             }
         }
 
+
         [HttpGet]
         public IActionResult CheckFollowStatus(string followedMemberId)
         {
             try
             {
-                // 從 Cookie 取得當前使用者的 MemberID
-                var currentUserId = Request.Cookies["MemberID"];
-
+                var currentUserId = GetCurrentUserId();
                 if (string.IsNullOrEmpty(currentUserId))
                 {
                     return Json(new { isFollowing = false });
                 }
 
-                // 找到被追蹤的會員
-                var followedMember = _context.Members
-                    .FirstOrDefault(m => m.MemberID == followedMemberId);
-
+                var followedMember = GetFollowedMember(followedMemberId);
                 if (followedMember == null)
                 {
                     return Json(new { isFollowing = false });
                 }
 
-                // 直接返回 Any() 的結果，無需定義變量
-                return Json(new
-                {
-                    isFollowing = _context.FollowList
-                        .Any(f => f.MemberID == currentUserId && f.LodestoneID == followedMember.LodestoneID)
-                });
+                // 檢查當前使用者是否已經追蹤該會員
+                var isFollowing = _context.FollowList
+                    .Any(f => f.MemberID == currentUserId && f.LodestoneID == followedMember.LodestoneID);
+
+                return Json(new { isFollowing });
             }
             catch (Exception)
             {
                 return Json(new { isFollowing = false });
             }
         }
+
     }
 }

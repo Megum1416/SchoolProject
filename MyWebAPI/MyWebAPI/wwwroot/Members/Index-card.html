@@ -12,7 +12,7 @@
 
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom box-shadow mb-3">
             <div class="container">
                 <a class="navbar-brand" href="#">會員名單</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -23,16 +23,17 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" href="/Members/Index.html">列表模式</a>
+                            <a class="nav-link text-light" href="/Members/Index.html">列表模式</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="/Members/Index-card.html">卡片模式</a>
+                            <a class="nav-link text-light" href="/Members/Index-card.html">卡片模式</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
+
 
     <div class="container mt-3">
         <h1 class="alert alert-warning text-center shadow-lg" role="alert">卡片模式</h1>
@@ -81,42 +82,42 @@
 
                     // 卡片的 HTML，並綁定 onclick 事件，點擊後顯示對應的會員圖片
                     let cardItem = `
-                            <div class="col-lg-3 col-md-6">
-                                <div class="card shadow-lg" onclick="showImage('${item.memberID}')" style="cursor: pointer;">
-                                    <div class="card-header mt-2">
-                                        <div class="row">
-                                            <div class="col-6">
-                                                <h5>${item.userName}</h5>
-                                            </div>
-                                            <div class="col-6">
-                                                <h5>${item.lodestoneID}</h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-6">
-                                                <p class="card-text">
-                                                    ${item.familyName}<br>
-                                                    ${item.dataCenter}<br>
-                                                    是否為管理員
-                                                </p>
-                                            </div>
-                                            <div class="col-6">
-                                                <p class="card-text">
-                                                    ${item.firstName}<br>
-                                                    ${item.serverName}<br>
-                                                    ${adminIcon}
-                                                </p>
+                                <div class="col-lg-3 col-md-6">
+                                    <div class="card shadow-lg" onclick="showImage('${item.memberID}')" style="cursor: pointer;">
+                                        <div class="card-header mt-2">
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <h5>${item.userName}</h5>
+                                                </div>
+                                                <div class="col-6">
+                                                    <h5>${item.lodestoneID}</h5>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="card-footer text-end">
-                                        <small class="text-muted">創建日期：${formattedDate}</small>
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <p class="card-text">
+                                                        ${item.familyName}<br>
+                                                        ${item.dataCenter}<br>
+                                                        是否為管理員
+                                                    </p>
+                                                </div>
+                                                <div class="col-6">
+                                                    <p class="card-text">
+                                                        ${item.firstName}<br>
+                                                        ${item.serverName}<br>
+                                                        ${adminIcon}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer text-end">
+                                            <small class="text-muted">創建日期：${formattedDate}</small>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            `;
+                                `;
 
                     cardContainer.append(cardItem);
                 }
