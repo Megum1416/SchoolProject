@@ -1,7 +1,11 @@
 {
   "Files": [
     {
-      "Id": "F:\\SchoolProject\\MyWebAPI\\MyWebAPI\\wwwroot\\Members\\Index.html",
+      "Id": "H:\\SchoolProject\\MyWebAPI\\MyWebAPI\\wwwroot\\Members\\Index-card.html",
+      "PackagePath": "staticwebassets\\Members\\Index-card.html"
+    },
+    {
+      "Id": "H:\\SchoolProject\\MyWebAPI\\MyWebAPI\\wwwroot\\Members\\Index.html",
       "PackagePath": "staticwebassets\\Members\\Index.html"
     },
     {

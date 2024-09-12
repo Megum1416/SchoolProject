@@ -113,6 +113,25 @@ namespace MyWebAPI.Controllers
             return NoContent();
         }
 
+        // Action 用來返回圖片
+        [HttpGet("GetImage/{id}")]
+        public IActionResult GetImage(string id)
+        {
+            // 從資料庫根據 MemberID 取得對應的圖片二進制資料
+            var member = _context.Members.FirstOrDefault(m => m.MemberID == id);
+
+            if (member == null || member.Photos == null || string.IsNullOrEmpty(member.ImageType))
+            {
+                return NotFound();
+            }
+
+            // 使用 FileContentResult 返回圖片的二進制數據和 MIME 類型
+            return new FileContentResult(member.Photos, member.ImageType);
+        }
+
+
+
+
         private bool MembersExists(string id)
         {
             return _context.Members.Any(e => e.MemberID == id);

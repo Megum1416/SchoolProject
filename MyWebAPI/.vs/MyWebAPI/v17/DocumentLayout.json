@@ -1,30 +1,22 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "F:\\SchoolProject\\MyWebAPI\\",
+  "WorkspaceRootPath": "H:\\SchoolProject\\MyWebAPI\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{FA29705D-9EDC-491E-9758-49DDA1785ED4}|MyWebAPI\\MyWebAPI.csproj|f:\\schoolproject\\mywebapi\\mywebapi\\controllers\\memberscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FA29705D-9EDC-491E-9758-49DDA1785ED4}|MyWebAPI\\MyWebAPI.csproj|solutionrelative:mywebapi\\controllers\\memberscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{FA29705D-9EDC-491E-9758-49DDA1785ED4}|MyWebAPI\\MyWebAPI.csproj|h:\\schoolproject\\mywebapi\\mywebapi\\wwwroot\\members\\index-card.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FA29705D-9EDC-491E-9758-49DDA1785ED4}|MyWebAPI\\MyWebAPI.csproj|solutionrelative:mywebapi\\wwwroot\\members\\index-card.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FA29705D-9EDC-491E-9758-49DDA1785ED4}|MyWebAPI\\MyWebAPI.csproj|f:\\schoolproject\\mywebapi\\mywebapi\\models\\members.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FA29705D-9EDC-491E-9758-49DDA1785ED4}|MyWebAPI\\MyWebAPI.csproj|solutionrelative:mywebapi\\models\\members.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FA29705D-9EDC-491E-9758-49DDA1785ED4}|MyWebAPI\\MyWebAPI.csproj|f:\\schoolproject\\mywebapi\\mywebapi\\wwwroot\\members\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{FA29705D-9EDC-491E-9758-49DDA1785ED4}|MyWebAPI\\MyWebAPI.csproj|h:\\schoolproject\\mywebapi\\mywebapi\\wwwroot\\members\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{FA29705D-9EDC-491E-9758-49DDA1785ED4}|MyWebAPI\\MyWebAPI.csproj|solutionrelative:mywebapi\\wwwroot\\members\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FA29705D-9EDC-491E-9758-49DDA1785ED4}|MyWebAPI\\MyWebAPI.csproj|f:\\schoolproject\\mywebapi\\mywebapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FA29705D-9EDC-491E-9758-49DDA1785ED4}|MyWebAPI\\MyWebAPI.csproj|solutionrelative:mywebapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{FA29705D-9EDC-491E-9758-49DDA1785ED4}|MyWebAPI\\MyWebAPI.csproj|h:\\schoolproject\\mywebapi\\mywebapi\\controllers\\memberscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FA29705D-9EDC-491E-9758-49DDA1785ED4}|MyWebAPI\\MyWebAPI.csproj|solutionrelative:mywebapi\\controllers\\memberscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FA29705D-9EDC-491E-9758-49DDA1785ED4}|MyWebAPI\\MyWebAPI.csproj|f:\\schoolproject\\mywebapi\\mywebapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{FA29705D-9EDC-491E-9758-49DDA1785ED4}|MyWebAPI\\MyWebAPI.csproj|solutionrelative:mywebapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FA29705D-9EDC-491E-9758-49DDA1785ED4}|MyWebAPI\\MyWebAPI.csproj|f:\\schoolproject\\mywebapi\\mywebapi\\models\\schoolprojectcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FA29705D-9EDC-491E-9758-49DDA1785ED4}|MyWebAPI\\MyWebAPI.csproj|solutionrelative:mywebapi\\models\\schoolprojectcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{FA29705D-9EDC-491E-9758-49DDA1785ED4}|MyWebAPI\\MyWebAPI.csproj|h:\\schoolproject\\mywebapi\\mywebapi\\models\\members.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FA29705D-9EDC-491E-9758-49DDA1785ED4}|MyWebAPI\\MyWebAPI.csproj|solutionrelative:mywebapi\\models\\members.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,17 +26,43 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Index-card.html",
+              "DocumentMoniker": "H:\\SchoolProject\\MyWebAPI\\MyWebAPI\\wwwroot\\Members\\Index-card.html",
+              "RelativeDocumentMoniker": "MyWebAPI\\wwwroot\\Members\\Index-card.html",
+              "ToolTip": "H:\\SchoolProject\\MyWebAPI\\MyWebAPI\\wwwroot\\Members\\Index-card.html",
+              "RelativeToolTip": "MyWebAPI\\wwwroot\\Members\\Index-card.html",
+              "ViewState": "AgIAAGkAAAAAAAAAAAAqwIQAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2024-09-12T00:48:23.349Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "Index.html",
+              "DocumentMoniker": "H:\\SchoolProject\\MyWebAPI\\MyWebAPI\\wwwroot\\Members\\Index.html",
+              "RelativeDocumentMoniker": "MyWebAPI\\wwwroot\\Members\\Index.html",
+              "ToolTip": "H:\\SchoolProject\\MyWebAPI\\MyWebAPI\\wwwroot\\Members\\Index.html",
+              "RelativeToolTip": "MyWebAPI\\wwwroot\\Members\\Index.html",
+              "ViewState": "AgIAAGgAAAAAAAAAAAAqwI0AAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2024-09-11T11:02:37.977Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "Members.cs",
-              "DocumentMoniker": "F:\\SchoolProject\\MyWebAPI\\MyWebAPI\\Models\\Members.cs",
+              "DocumentMoniker": "H:\\SchoolProject\\MyWebAPI\\MyWebAPI\\Models\\Members.cs",
               "RelativeDocumentMoniker": "MyWebAPI\\Models\\Members.cs",
-              "ToolTip": "F:\\SchoolProject\\MyWebAPI\\MyWebAPI\\Models\\Members.cs",
+              "ToolTip": "H:\\SchoolProject\\MyWebAPI\\MyWebAPI\\Models\\Members.cs",
               "RelativeToolTip": "MyWebAPI\\Models\\Members.cs",
-              "ViewState": "AQIAABYAAAAAAAAAAAA5wBcAAAAAAAAA",
+              "ViewState": "AgIAAA4AAAAAAAAAAAA1wCEAAAADAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-11T10:29:45.947Z",
               "EditorCaption": ""
@@ -52,66 +70,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Index.html",
-              "DocumentMoniker": "F:\\SchoolProject\\MyWebAPI\\MyWebAPI\\wwwroot\\Members\\Index.html",
-              "RelativeDocumentMoniker": "MyWebAPI\\wwwroot\\Members\\Index.html",
-              "ToolTip": "F:\\SchoolProject\\MyWebAPI\\MyWebAPI\\wwwroot\\Members\\Index.html",
-              "RelativeToolTip": "MyWebAPI\\wwwroot\\Members\\Index.html",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAFcAAAAHAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2024-09-11T11:02:37.977Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
               "Title": "MembersController.cs",
-              "DocumentMoniker": "F:\\SchoolProject\\MyWebAPI\\MyWebAPI\\Controllers\\MembersController.cs",
+              "DocumentMoniker": "H:\\SchoolProject\\MyWebAPI\\MyWebAPI\\Controllers\\MembersController.cs",
               "RelativeDocumentMoniker": "MyWebAPI\\Controllers\\MembersController.cs",
-              "ToolTip": "F:\\SchoolProject\\MyWebAPI\\MyWebAPI\\Controllers\\MembersController.cs",
+              "ToolTip": "H:\\SchoolProject\\MyWebAPI\\MyWebAPI\\Controllers\\MembersController.cs",
               "RelativeToolTip": "MyWebAPI\\Controllers\\MembersController.cs",
-              "ViewState": "AQIAAF0AAAAAAAAAAAAuwHAAAAAfAAAA",
+              "ViewState": "AgIAAHAAAAAAAAAAAAAswIwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-11T10:11:06.651Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Program.cs",
-              "DocumentMoniker": "F:\\SchoolProject\\MyWebAPI\\MyWebAPI\\Program.cs",
-              "RelativeDocumentMoniker": "MyWebAPI\\Program.cs",
-              "ToolTip": "F:\\SchoolProject\\MyWebAPI\\MyWebAPI\\Program.cs",
-              "RelativeToolTip": "MyWebAPI\\Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABkAAAAVAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-11T10:07:27.181Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "F:\\SchoolProject\\MyWebAPI\\MyWebAPI\\appsettings.json",
-              "RelativeDocumentMoniker": "MyWebAPI\\appsettings.json",
-              "ToolTip": "F:\\SchoolProject\\MyWebAPI\\MyWebAPI\\appsettings.json",
-              "RelativeToolTip": "MyWebAPI\\appsettings.json",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAASAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-09-11T10:05:07.727Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "SchoolProjectContext.cs",
-              "DocumentMoniker": "F:\\SchoolProject\\MyWebAPI\\MyWebAPI\\Models\\SchoolProjectContext.cs",
-              "RelativeDocumentMoniker": "MyWebAPI\\Models\\SchoolProjectContext.cs",
-              "ToolTip": "F:\\SchoolProject\\MyWebAPI\\MyWebAPI\\Models\\SchoolProjectContext.cs",
-              "RelativeToolTip": "MyWebAPI\\Models\\SchoolProjectContext.cs",
-              "ViewState": "AQIAAA8AAAAAAAAAAAAIwBkAAAAEAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-11T10:04:56.809Z",
               "EditorCaption": ""
             }
           ]

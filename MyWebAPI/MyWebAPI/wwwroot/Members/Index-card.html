@@ -1,0 +1,142 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>會員清單卡片</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container">
+                <a class="navbar-brand" href="#">會員名單</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="/Members/Index.html">列表模式</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="/Members/Index-card.html">卡片模式</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container mt-3">
+        <h1 class="alert alert-warning text-center shadow-lg" role="alert">卡片模式</h1>
+        <p class="text-center">可點擊卡片開啟圖片</p>
+        <div id="card-container" class="row g-4 ">
+        </div>
+    </div>
+
+    <!-- Modal 結構 -->
+    <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="imageModalLabel">會員圖片</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- 圖片會顯示在這裡 -->
+                    <img id="modalImage" src="" class="img-fluid" style="width: 450px;" alt="會員圖片">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+            crossorigin="anonymous"></script>
+
+    <script>
+        $.ajax({
+            type: "Get",
+            url: "http://localhost:5174/apiMembers",
+            success: function (data) {
+                console.log(data);
+
+                let cardContainer = $("#card-container");
+
+                for (let item of data) {
+
+                    // 使用 split 分割字串，只取日期部分
+                    let formattedDate = item.createdAt.split('T')[0];  // 分割字符串，取 'T' 前面的日期部分
+
+                    // 判斷 isAdmin 是否為 true，顯示勾勾或留空
+                    let adminIcon = item.isAdmin ? '<i class="bi bi-check-circle-fill"></i>' : '<i class="bi bi-x-circle-fill"></i>';
+
+                    // 卡片的 HTML，並綁定 onclick 事件，點擊後顯示對應的會員圖片
+                    let cardItem = `
+                            <div class="col-lg-3 col-md-6">
+                                <div class="card shadow-lg" onclick="showImage('${item.memberID}')" style="cursor: pointer;">
+                                    <div class="card-header mt-2">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <h5>${item.userName}</h5>
+                                            </div>
+                                            <div class="col-6">
+                                                <h5>${item.lodestoneID}</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <p class="card-text">
+                                                    ${item.familyName}<br>
+                                                    ${item.dataCenter}<br>
+                                                    是否為管理員
+                                                </p>
+                                            </div>
+                                            <div class="col-6">
+                                                <p class="card-text">
+                                                    ${item.firstName}<br>
+                                                    ${item.serverName}<br>
+                                                    ${adminIcon}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer text-end">
+                                        <small class="text-muted">創建日期：${formattedDate}</small>
+                                    </div>
+                                </div>
+                            </div>
+                            `;
+
+                    cardContainer.append(cardItem);
+                }
+
+            },
+            error: function () { }
+        });
+
+        // 顯示圖片的函數，使用會員的 ID 來獲取圖片
+        function showImage(memberID) {
+            // 構建請求圖片的 URL，使用會員的 ID
+            let imageUrl = `http://localhost:5174/apiMembers/GetImage/${memberID}`;
+            // 將 modal 中的圖片 src 設置為動態獲取的圖片 URL
+            $('#modalImage').attr('src', imageUrl);
+            // 顯示 modal
+            $('#imageModal').modal('show');
+        }
+
+    </script>
+
+</body>
+
+</html>
