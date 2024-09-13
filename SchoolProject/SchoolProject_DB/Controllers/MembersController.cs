@@ -89,7 +89,7 @@ namespace SchoolProject_DB.Controllers
             return View();
         }
 
-        // 當用戶提交會員創建表單時處理的動作
+        // 當使用者提交會員創建表單時處理的動作
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("MemberID,Email,Password,UserName,LodestoneID,FirstName,FamilyName,DataCenter,ServerName,CreatedAt,UpdatedAt,Photos,ImageType")] Members members, IFormFile? uploadPhoto, string? PhotoUrl)
@@ -98,6 +98,14 @@ namespace SchoolProject_DB.Controllers
             {
                 ModelState.AddModelError("", "MemberID未生成，請重新嘗試。");
                 return View(members);
+            }
+
+            // 檢查資料庫是否已經有相同的 LodestoneID
+            var existingMember = await _context.Members.FirstOrDefaultAsync(m => m.LodestoneID == members.LodestoneID);
+            if (existingMember != null)
+            {
+                ModelState.AddModelError("LodestoneID", "此 LodestoneID 已經存在，請使用不同的 ID。");
+                return View(members); // 返回原始表單並顯示錯誤訊息
             }
 
             await HandlePhotoUpload(members, uploadPhoto, PhotoUrl);
@@ -113,6 +121,9 @@ namespace SchoolProject_DB.Controllers
             return View(members);
         }
 
+
+
+        // 用於給使用者創建資料時，抓取角色資訊的action
         [HttpGet]
         public async Task<IActionResult> FetchLodestoneInfo(string lodestoneID)
         {
@@ -167,7 +178,7 @@ namespace SchoolProject_DB.Controllers
         }
 
 
-        // 用於抓取角色照片的動作方法
+        // 用於給使用者創建資料時，抓取角色照片的action
         [HttpGet]
         public async Task<IActionResult> FetchLodestonePhoto(string lodestoneID)
         {
@@ -237,7 +248,7 @@ namespace SchoolProject_DB.Controllers
         }
 
 
-        // 讀取會員的照片
+        // 讀取會員的照片+使用者沒上傳圖片時要顯示預設
         public async Task<FileContentResult> GetImage(string memberId)
         {
             var member = await _context.Members.FirstOrDefaultAsync(m => m.MemberID == memberId);
@@ -279,7 +290,7 @@ namespace SchoolProject_DB.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-
+        //此action是拿來配合上面action做使用的
         private async Task<string> FetchLodestonePhotoForMember(string lodestoneID)
         {
             if (!string.IsNullOrEmpty(lodestoneID))
