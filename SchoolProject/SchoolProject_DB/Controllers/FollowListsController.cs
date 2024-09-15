@@ -32,18 +32,33 @@ namespace SchoolProject_DB.Controllers
 
             // 查詢當前使用者的追蹤名單
             var followList = await _context.FollowList
-                .Include(f => f.Member) // 包含會員資訊
-                .Where(f => f.MemberID == currentUserId)
+                .Where(f => f.MemberID == currentUserId) // 查詢會員A的追蹤名單
                 .ToListAsync();
 
+            // 通過LodestoneID去Members表查詢對應的會員資料
+            var followedMembers = new List<Members>();
+
+            foreach (var follow in followList)
+            {
+                // 根據LodestoneID查詢會員B的資料
+                var member = await _context.Members
+                    .FirstOrDefaultAsync(m => m.LodestoneID == follow.LodestoneID);
+
+                if (member != null)
+                {
+                    followedMembers.Add(member);
+                }
+            }
+
             // 如果追蹤列表為空，顯示訊息
-            if (!followList.Any())
+            if (!followedMembers.Any())
             {
                 ViewBag.Message = "您目前尚未追蹤任何人。";
             }
 
-            return View(followList);
+            return View(followedMembers); // 傳遞被追蹤的會員資料到視圖中
         }
+
 
         /*
         // GET: FollowLists/Details/5

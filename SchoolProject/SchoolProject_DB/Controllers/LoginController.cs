@@ -67,7 +67,7 @@ namespace SchoolProject_DB.Controllers
             }
             else
             {
-                ViewData["Error"] = "登入失敗，請檢查Email或密碼";
+                ViewData["Error"] = "登入失敗，請檢查 帳號 或 密碼";
                 return View();
             }
         }

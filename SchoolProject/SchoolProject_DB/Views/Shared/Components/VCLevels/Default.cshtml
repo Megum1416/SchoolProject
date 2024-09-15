@@ -1,0 +1,94 @@
+﻿@model List<string>
+
+@{
+    var tankImages = new List<string> { "01.png", "02.png", "03.png", "04.png" };
+    var healerImages = new List<string> { "05.png", "06.png", "07.png", "08.png" };
+    var meleeDPSImages = new List<string> { "09.png", "10.png", "11.png", "12.png", "13.png", "14.png" };
+    var physicalRangedDPSImages = new List<string> { "15.png", "16.png", "17.png" };
+    var magicalRangedDPSImages = new List<string> { "18.png", "19.png", "20.png", "21.png", "22.png" };
+
+    // 將所有圖片組合成一個列表
+    var allImages = tankImages.Concat(healerImages)
+                              .Concat(meleeDPSImages)
+                              .Concat(physicalRangedDPSImages)
+                              .Concat(magicalRangedDPSImages)
+                              .ToList();
+}
+
+<link href="~/css/site.css" rel="stylesheet" />
+
+<div class="container">
+    <div class="row">
+        <!-- 左欄 -->
+        <div class="col-md-6">
+            <!-- Tank -->
+            <div class="LevelCategory">
+                <img src="~/images/Tank.png" alt="Tank" class="LevelIcon" />
+                <h4 class="LevelTitle"><strong>Tank</strong></h4>
+            </div>
+
+            @for (int i = 0; i < 4; i++)
+            {
+                <div class="LevelRow">
+                    <img src="~/images/@allImages[i]" alt="@allImages[i]" class="LevelIcon" />
+                    <h5 class="LevelSubtitle">@Model[i]</h5>
+                </div>
+            }
+
+            <!-- Healer -->
+            <div class="LevelCategory">
+                <img src="~/images/Healer.png" alt="Healer" class="LevelIcon" />
+                <h4 class="LevelTitle"><strong>Healer</strong></h4>
+            </div>
+            @for (int i = 4; i < 8; i++)
+            {
+                <div class="LevelRow">
+                    <img src="~/images/@allImages[i]" alt="@allImages[i]" class="LevelIcon" />
+                    <h5 class="LevelSubtitle">@Model[i]</h5>
+                </div>
+            }
+        </div>
+
+        <!-- 右欄 -->
+        <div class="col-md-6">
+            <!-- Melee DPS -->
+            <div class="LevelCategory">
+                <img src="~/images/MeleeDPS.png" alt="MeleeDPS" class="LevelIcon" />
+                <h4 class="LevelTitle"><strong>Melee DPS</strong></h4>
+            </div>
+            @for (int i = 8; i < 14; i++)
+            {
+                <div class="LevelRow">
+                    <img src="~/images/@allImages[i]" alt="@allImages[i]" class="LevelIcon" />
+                    <h5 class="LevelSubtitle">@Model[i]</h5>
+                </div>
+            }
+
+            <!-- Physical Ranged DPS -->
+            <div class="LevelCategory">
+                <img src="~/images/PhysicalRangedDPS.png" alt="PhysicalRangedDPS" class="LevelIcon" />
+                <h4 class="LevelTitle"><strong>Physical DPS</strong></h4>
+            </div>
+            @for (int i = 14; i < 17; i++)
+            {
+                <div class="LevelRow">
+                    <img src="~/images/@allImages[i]" alt="@allImages[i]" class="LevelIcon" />
+                    <h5 class="LevelSubtitle">@Model[i]</h5>
+                </div>
+            }
+
+            <!-- Magical Ranged DPS -->
+            <div class="LevelCategory">
+                <img src="~/images/MagicalRangedDPS.png" alt="MagicalRangedDPS" class="LevelIcon" />
+                <h4 class="LevelTitle"><strong>Magical DPS</strong></h4>
+            </div>
+            @for (int i = 17; i < 22; i++)
+            {
+                <div class="LevelRow">
+                    <img src="~/images/@allImages[i]" alt="@allImages[i]" class="LevelIcon" />
+                    <h5 class="LevelSubtitle">@Model[i]</h5>
+                </div>
+            }
+        </div>
+    </div>
+</div>

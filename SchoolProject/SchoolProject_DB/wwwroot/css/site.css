@@ -77,3 +77,38 @@ body {
     border-radius: 5px; /* 設置圓角，您可以調整這個值來更改圓弧的大小 */
 }
 
+
+/*VCLevel的CSS*/
+
+.LevelCategory {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 5px; /* 圓角邊框 */
+    margin-bottom: 1rem;
+    background-color: #f8f9fa; /* 背景顏色可以根據需求調整 */
+}
+
+.LevelTitle {
+    margin-bottom: 0;
+    margin-left: 0.5rem; /* 與圖標分開 */
+}
+
+.LevelSubtitle {
+    margin-bottom: 0;
+    margin-left: 1rem;
+}
+
+.LevelIcon {
+    width: 36px;
+    height: 36px;
+}
+
+.LevelRow {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    margin-left: 10px;
+}
+

@@ -1,45 +1,38 @@
-﻿@model IEnumerable<SchoolProject_DB.Models.FollowList>
+﻿@model IEnumerable<SchoolProject_DB.Models.Members>
 
 @{
     ViewData["Title"] = "已追隨名單";
 }
 
-
+<link href="~/css/site.css" rel="stylesheet" /> <!-- 使用相同的 CSS -->
 
 <h1 class="alert alert-secondary text-center" role="alert">@ViewData["Title"]</h1>
 
 @if (ViewBag.Message != null)
-
 {
-    <p>@ViewBag.Message</p>
+    <h3 class="alert alert-primary" role="alert">@ViewBag.Message</h3>
 }
-
 else
-
 {
-    <table class="table">
-        <thead>
-            <tr>
-                <th>目前追蹤的LodestoneID</th>
-                <th>追蹤時間</th>
-                <th>操作</th> <!-- 新增操作欄 -->
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var follow in Model)
-
+    <div class="container mt-4">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+            @foreach (var member in Model)
             {
-                <tr>
-                    <td>@follow.LodestoneID</td>
-                    <td>@follow.CreatedAt.ToString("yyyy/MM/dd HH:mm")</td>
-                    <td>
-                        <form asp-action="Delete" method="post">
-                            <input type="hidden" name="id" value="@follow.FollowID" />
-                            <button type="submit" class="btn btn-danger btn-sm">取消追蹤</button>
-                        </form>
-                    </td> <!-- 新增取消追蹤按鈕 -->
-                </tr>
+                <div class="col memberIndex-col-item">
+                    <div class="memberIndex-content-container">
+                        <div class="memberIndex-image-container">
+                            <!-- 使用 Members 控制器和 MemberID 傳遞路由參數 -->
+                            <a asp-controller="Members" asp-action="Details" asp-route-id="@member.MemberID">
+                                <img src="@Url.Action("GetImage", "Members", new { memberId = member.MemberID })" alt="Member Photo">
+                                <div class="memberIndex-overlay-text">
+                                    @member.FamilyName @member.FirstName <br>
+                                    @member.DataCenter - @member.ServerName
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
             }
-        </tbody>
-    </table>
+        </div>
+    </div>
 }

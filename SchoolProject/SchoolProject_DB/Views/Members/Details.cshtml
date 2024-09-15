@@ -2,11 +2,6 @@
 
 @{
     ViewData["Title"] = $"{Model.FamilyName} {Model.FirstName} 的詳細資訊";
-
-
-
-    // 從請求的 Cookie 中讀取 MemberID
-
     string cookieMemberID = Context.Request.Cookies["MemberID"];
 }
 
@@ -29,16 +24,11 @@
         </div>
 
         @if (User.Identity.IsAuthenticated && cookieMemberID == Model.MemberID)
-
         {
-            <!-- 當 cookie 中的 memberID 與當前會員相同時顯示 Edit 按鈕 -->
             <a asp-action="Edit" asp-route-id="@Model?.MemberID" class="btn btn-warning">編輯資料</a>
         }
-
         else if (User.Identity.IsAuthenticated && cookieMemberID != Model.MemberID)
-
         {
-            <!-- 按鈕觸發 Modal -->
             <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#confirmFollowModal">
                 <i id="follow-icon" class="bi bi-star fs-4"></i>
             </button>
@@ -62,7 +52,6 @@
                 </div>
             </div>
         </div>
-
     </div>
 
     <hr />
@@ -71,43 +60,43 @@
         <!-- 左邊會員資料 -->
         <div class="col-md-6 text-center">
             <img src="@Url.Action("GetImage", "Members", new { memberId = Model.MemberID })" alt="Member Photo" width="450" class="img-fluid mb-3 rounded-image" />
-            <!-- 顯示 FamilyName、FirstName、ServerName、DataCenter 的資訊 -->
             <div class="fw-bold">
                 <h4><strong>@Model.FamilyName @Model.FirstName</strong></h4>
                 <h5><strong>@Model.DataCenter - @Model.ServerName</strong></h5>
             </div>
-
-            <!-- 顯示表格資訊 -->
             <table class="table table-borderless mt-3">
                 <tbody>
                     <tr>
-                        <th>@Html.DisplayNameFor(model => model.UserName)</th>
-                        <td>@Html.DisplayFor(model => model.UserName)</td>
+                        <th><h5><strong>@Html.DisplayNameFor(model => model.UserName)</strong></h5></th>
+                        <td><h5><strong>@Html.DisplayFor(model => model.UserName)</strong></h5></td>
                     </tr>
                     <tr>
-                        <th>@Html.DisplayNameFor(model => model.LodestoneID)</th>
-                        <td>@Html.DisplayFor(model => model.LodestoneID)</td>
+                        <th><h5><strong>@Html.DisplayNameFor(model => model.LodestoneID)</strong></h5></th>
+                        <td><h5><strong>@Html.DisplayFor(model => model.LodestoneID)</strong></h5></td>
                     </tr>
                     <tr>
-                        <th>@Html.DisplayNameFor(model => model.CreatedAt)</th>
-                        <td>@Html.DisplayFor(model => model.CreatedAt)</td>
+                        <th><h5><strong>@Html.DisplayNameFor(model => model.CreatedAt)</strong></h5></th>
+                        <td><h5><strong>@Html.DisplayFor(model => model.CreatedAt)</strong></h5></td>
                     </tr>
                 </tbody>
             </table>
+
         </div>
 
-
+        <!-- 右邊職業等級資料，顯示爬蟲結果 -->
+        <div class="col-md-6">
+            @await Component.InvokeAsync("VCLevels", new { lodestoneID = Model.LodestoneID })
+        </div>
     </div>
 </div>
-
 
 <br />
 
 @section Scripts {
     <script>
         $(document).ready(function () {
-            var followedMemberId = "@Model.MemberID"; // 被訪問的會員ID (B)
-            var isFollowing = false; // 用來儲存追蹤狀態
+            var followedMemberId = "@Model.MemberID";
+            var isFollowing = false;
 
             // 檢查追蹤狀態
             $.ajax({
@@ -116,15 +105,12 @@
                 data: { followedMemberId: followedMemberId },
                 success: function (response) {
                     if (response.isFollowing) {
-                        // 如果已經追蹤，更新圖標為實心星星
                         $("#follow-icon").removeClass("bi-star").addClass("bi-star-fill");
-                        // 更新Modal的內容為取消追蹤
                         $("#confirmFollowModalLabel").text("確認取消追蹤");
                         $(".modal-body").text("確定要取消追蹤這個會員嗎？");
                         $("#confirmFollowBtn").text("確定");
-                        isFollowing = true; // 更新追蹤狀態
+                        isFollowing = true;
                     } else {
-                        // 更新Modal的內容為追蹤
                         $("#confirmFollowModalLabel").text("確認追蹤");
                         $(".modal-body").text("確定要追蹤這個會員嗎？");
                         $("#confirmFollowBtn").text("確定");
@@ -136,7 +122,6 @@
                 }
             });
 
-            // 點擊確認追蹤或取消追蹤按鈕後，發送追蹤請求
             $("#confirmFollowBtn").click(function () {
                 $.ajax({
                     url: '@Url.Action("Follow", "FollowLists")',
@@ -144,23 +129,12 @@
                     data: { followedMemberId: followedMemberId },
                     success: function (response) {
                         if (response.success) {
-                            // 成功後關閉 Modal
                             $('#confirmFollowModal').modal('hide');
-
-                            // 更新圖標與提示訊息
                             if (response.action === "followed") {
                                 $("#follow-icon").removeClass("bi-star").addClass("bi-star-fill");
-                                $("#confirmFollowModalLabel").text("確認取消追蹤");
-                                $(".modal-body").text("確定要取消追蹤這個會員嗎？");
-                                $("#confirmFollowBtn").text("確定");
-                                isFollowing = true;
                                 alert("成功追蹤！");
                             } else if (response.action === "unfollowed") {
                                 $("#follow-icon").removeClass("bi-star-fill").addClass("bi-star");
-                                $("#confirmFollowModalLabel").text("確認追蹤");
-                                $(".modal-body").text("確定要追蹤這個會員嗎？");
-                                $("#confirmFollowBtn").text("確定");
-                                isFollowing = false;
                                 alert("成功取消追蹤！");
                             }
                         } else {
@@ -175,4 +149,3 @@
         });
     </script>
 }
-
