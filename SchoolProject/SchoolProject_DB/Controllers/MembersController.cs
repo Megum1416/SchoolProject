@@ -233,39 +233,56 @@ namespace SchoolProject_DB.Controllers
             return Json(null);
         }
 
-        // 進入會員資料編輯頁面
+        // GET: Edit
         public async Task<IActionResult> Edit(string id)
         {
-            if (id == null) return NotFound();
+            if (id == null)
+                return NotFound();
 
-            var members = await _context.Members.FindAsync(id);
-            if (members == null) return NotFound();
+            var member = await _context.Members.AsTracking().FirstOrDefaultAsync(m => m.MemberID == id);
+            if (member == null)
+                return NotFound();
 
-            return View(members);
+            // 若需要，可以將 Session 的數據存入 ViewBag
+            ViewBag.Email = HttpContext.Session.GetString("Email");
+            ViewBag.LodestoneID = HttpContext.Session.GetString("LodestoneID");
+
+            return View(member);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("MemberID,Password,UserName,FirstName,FamilyName,DataCenter,ServerName,Photos,ImageType")] Members members, IFormFile? uploadPhoto, string? PhotoUrl)
+        public async Task<IActionResult> Edit(string id, IFormFile? uploadPhoto, string? PhotoUrl)
         {
-            if (id != members.MemberID) return NotFound();
+            var member = await _context.Members.AsTracking().FirstOrDefaultAsync(m => m.MemberID == id);
+            if (member == null)
+                return NotFound();
 
-            await HandlePhotoUpload(members, uploadPhoto, PhotoUrl);
+            // 確保使用者無法修改 LodestoneID
+            if (!await TryUpdateModelAsync(member, "",
+                m => m.Password, m => m.UserName, m => m.FirstName, m => m.FamilyName, m => m.DataCenter, m => m.ServerName))
+            {
+                ModelState.AddModelError("LodestoneID", "您無法修改 LodestoneID。");
+                return View(member);
+            }
+
+            // 處理照片上傳
+            await HandlePhotoUpload(member, uploadPhoto, PhotoUrl);
 
             if (ModelState.IsValid)
             {
-                // 保護 IsAdmin 欄位不被修改
-                _context.Entry(members).Property(m => m.IsAdmin).IsModified = false;
+                member.UpdatedAt = DateTime.Now;
+                await _context.SaveChangesAsync();  // 保存變更
 
-                // 自動更新 UpdatedAt
-                members.UpdatedAt = DateTime.Now;
+                // 更新 Session 中的資料
+                HttpContext.Session.SetString("Email", member.Email);
+                HttpContext.Session.SetString("UserName", member.UserName);
+                HttpContext.Session.SetString("LodestoneID", member.LodestoneID);
 
-                _context.Update(members);
-                await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
 
-            return View(members);
+            return View(member);
         }
 
 
@@ -411,11 +428,20 @@ namespace SchoolProject_DB.Controllers
                 return NotFound(); // 如果會員不存在，回傳404
             }
 
-            _context.Members.Remove(member); // 刪除該會員
+            // 刪除所有該會員追隨的資料
+            var followLists = await _context.FollowList
+                .Where(f => f.MemberID == member.MemberID || f.LodestoneID == member.LodestoneID)
+                .ToListAsync();
+
+            _context.FollowList.RemoveRange(followLists); // 刪除追蹤相關的記錄
+
+            // 刪除該會員
+            _context.Members.Remove(member);
             await _context.SaveChangesAsync(); // 保存更改到資料庫
 
             return RedirectToAction(nameof(Index)); // 刪除後重定向回列表頁
         }
+
 
         private bool MemberExists(string id)
         {

@@ -44,7 +44,7 @@ public partial class Post
 
     public string? ImageType { get; set; }
 
-    public virtual Members Member { get; set; } = null!;
+    public virtual Members? Member { get; set; } = null!;
 
-    public virtual ICollection<RePost> RePost { get; set; } = new List<RePost>();
+    public virtual ICollection<RePost>? RePost { get; set; } = new List<RePost>();
 }

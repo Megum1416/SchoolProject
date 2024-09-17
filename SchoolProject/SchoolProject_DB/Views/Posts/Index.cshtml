@@ -1,50 +1,64 @@
-﻿@model IEnumerable<SchoolProject_DB.Models.Post>
+﻿@model IEnumerable<SchoolProject_DB.ViewModels.PostWithRePostCountViewModel>
 
 @{
     ViewData["Title"] = "討論區";
     string sessionMemberID = ViewBag.SessionMemberID; // 從 ViewBag 取得 Session 的 MemberID
 }
 
-<h1 class="alert alert-secondary text-center" role="alert">歡迎來到 @ViewData["Title"] ！</h1>
+<h1 class="alert alert-success text-center" role="alert">歡迎來到 @ViewData["Title"] ！</h1>
 
 @if (!string.IsNullOrEmpty(sessionMemberID))
 {
     <!-- 只有登入的使用者可以看到新增文章的按鈕 -->
-    <p>
-        <a asp-action="Create" class="btn btn-outline-success text-end">新增文章</a>
-    </p>
+    <div class="text-end">
+        <a asp-action="Create" class="btn btn-outline-success">新增文章</a>
+    </div>
 }
-
+<br />
 <table class="table table-hover table-bordered align-middle">
     <thead class="thead-dark text-center table-light">
         <tr>
-            <th>標題</th>
-            <th>發文者</th>
-            <th>更新時間</th>
-            <th></th>
+            <th style="width: 60%;">標題</th> 
+            <th style="width: 8%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">發文者</th> 
+            <th style="width: 7%;">留言數</th> 
+            <th style="width: 13%;">更新時間</th>
+            <th>動作</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
             <tr>
-                <!-- 顯示文章標題，靠左對齊 -->
-                <td>
-                    @Html.DisplayFor(modelItem => item.PostTitle)
+                <!-- 顯示文章標題 -->
+                <td class="ps-4">
+                    @Html.DisplayFor(modelItem => item.Post.PostTitle)
                 </td>
-                <!-- 顯示發文者的 UserName，置中對齊 -->
+                <!-- 顯示發文者的 UserName -->
                 <td class="text-center">
-                    @item.Member.UserName
+                    @item.Post.Member?.UserName
+                </td>
+                <!-- 顯示留言數 -->
+                <td class="text-center">
+                    @item.RePostCount
                 </td>
                 <!-- 顯示 UpdatedAt 或 CreatedAt -->
                 <td class="text-center">
-                    @if (item.UpdatedAt.HasValue)
+                    @if (item.Post.UpdatedAt.HasValue)
                     {
-                        @item.UpdatedAt?.ToString("yyyy/MM/dd HH:mm")
+                        @item.Post.UpdatedAt?.ToString("yyyy/MM/dd HH:mm")
                     }
                     else
                     {
-                        @item.CreatedAt.ToString("yyyy/MM/dd HH:mm")
+                        @item.Post.CreatedAt.ToString("yyyy/MM/dd HH:mm")
+                    }
+                </td>
+                <td class="text-center">
+                    <a asp-action="Details" asp-route-id="@item.Post.PostID" class="btn btn-outline-success">查看</a>
+                    @if (ViewBag.IsAdmin == true) // 檢查是否為管理員
+                    {
+                        <form asp-action="Delete" asp-route-id="@item.Post.PostID" method="post" style="display:inline;">
+                            <button type="submit" class="btn btn-outline-danger" onclick="return confirm('確定要刪除這篇文章嗎？');">刪除</button>
+                        </form>
                     }
                 </td>
             </tr>

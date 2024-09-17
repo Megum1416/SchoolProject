@@ -14,35 +14,41 @@
         <form asp-action="Create" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-            <!-- 隱藏的欄位，從 ViewBag 取得值 -->
-            <input type="hidden" asp-for="PostID" value="@ViewBag.NewPostID" />
-            <input type="hidden" asp-for="MemberID" value="@ViewBag.NewMemberID" />
+            <!-- PostID 輸入欄位 -->
+            <div class="mb-3">
+                <label asp-for="PostID" class="form-label">文章 ID</label>
+                <input type="text" asp-for="PostID" class="form-control" value="@ViewBag.NewPostID" readonly />
+            </div>
+
+            <!-- MemberID 輸入欄位 -->
+            <div class="mb-3">
+                <label asp-for="MemberID" class="form-label">會員 ID</label>
+                <input type="text" asp-for="MemberID" class="form-control" value="@ViewBag.NewMemberID" readonly />
+            </div>
 
             <!-- 標題輸入欄位 -->
             <div class="mb-3">
                 <label asp-for="PostTitle" class="form-label"></label>
-                <input asp-for="PostTitle" class="form-control" id="formGroupPostTitle" placeholder="請輸入標題">
+                <input asp-for="PostTitle" class="form-control" id="formGroupPostTitle" placeholder="請輸入標題" required />
                 <span asp-validation-for="PostTitle" class="text-danger"></span>
             </div>
 
-            <!-- 內文輸入欄位，文字框較高 -->
+            <!-- 內文輸入欄位 -->
             <div class="mb-3">
                 <label asp-for="Description" class="form-label"></label>
-                <textarea asp-for="Description" class="form-control" id="formGroupDescription" rows="8" placeholder="請輸入內文"></textarea>
+                <textarea asp-for="Description" class="form-control" id="formGroupDescription" rows="8" placeholder="請輸入內文" required></textarea>
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
 
             <!-- 上傳圖片欄位 -->
             <div class="row align-items-center mt-3">
                 <label asp-for="Photos" class="form-label"></label>
-                <!-- 使用者可上傳自己的照片 -->
                 <div class="col-md-9">
                     <div class="form-group">
                         <input type="file" name="uploadPhoto" id="uploadPhoto" class="form-control" />
                         <span>@ViewData["Message"]</span>
                     </div>
                 </div>
-                <!-- 清除上傳檔案的按鈕 -->
                 <div class="col-md-3">
                     <div class="form-group">
                         <button type="button" class="btn btn-secondary" id="clearFileButton">
@@ -105,6 +111,13 @@
         function hideLoadingSpinner() {
             $("#loadingSpinner").hide();
         }
+
+        // 確認到底有沒有拿到資料
+        var NewPostID = '@ViewBag.NewPostID'
+        var NewMemberID = '@ViewBag.NewMemberID'
+        console.log("NewPostID: " + NewPostID)
+        console.log("NewMemberID: " + NewMemberID)
+
     </script>
 }
 

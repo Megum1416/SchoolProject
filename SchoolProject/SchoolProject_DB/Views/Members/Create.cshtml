@@ -62,6 +62,19 @@
             <h2 style="display: inline;"><strong>角色資訊</strong></h2>
             <h5 style="display: inline; margin-left: 10px;">可按下方抓取按鈕自動讀取Lodestone資料</h5>
 
+            <br /> <br />
+
+            <!-- 按鈕1和按鈕2: 用於抓取FirstName, FamilyName, DataCenter, ServerName和角色照片 -->
+            <div class="btn-group w-100" role="group" aria-label="Fetch buttons group">
+                <button type="button" class="btn btn-outline-secondary w-50" id="fetchInfoButton">抓取角色資訊</button>
+                <button type="button" class="btn btn-outline-secondary w-50" id="fetchPhotoButton">抓取角色圖片</button>
+            </div>
+
+            <!-- 用於顯示錯誤訊息 -->
+            <div class="form-group mt-2">
+                <div id="infoErrorMessage" class="text-danger" style="display:none;"></div>
+                <div id="photoErrorMessage" class="text-danger" style="display:none;"></div>
+            </div>
 
             <!-- 以下欄位將由爬蟲自動填充 -->
             <div class="row mt-3">
@@ -102,21 +115,9 @@
                 </div>
             </div>
 
-            <br />
+           
 
-            <!-- 按鈕1和按鈕2: 用於抓取FirstName, FamilyName, DataCenter, ServerName和角色照片 -->
-            <div class="btn-group w-100" role="group" aria-label="Fetch buttons group">
-                <button type="button" class="btn btn-outline-secondary w-50" id="fetchInfoButton">抓取角色資訊</button>
-                <button type="button" class="btn btn-outline-secondary w-50" id="fetchPhotoButton">抓取角色圖片</button>
-            </div>
-
-            <!-- 用於顯示錯誤訊息 -->
-            <div class="form-group mt-2">
-                <div id="infoErrorMessage" class="text-danger" style="display:none;"></div>
-                <div id="photoErrorMessage" class="text-danger" style="display:none;"></div>
-            </div>
-
-
+            
             <div class="row align-items-center mt-3">
                 <label asp-for="Photos" class="form-label"></label>
                 <!-- 使用者可上傳自己的照片 -->

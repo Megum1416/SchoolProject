@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using SchoolProject_DB.Models;
+using SchoolProject_DB.ViewModels;
 
 namespace SchoolProject_DB.Controllers
 {
@@ -22,16 +23,23 @@ namespace SchoolProject_DB.Controllers
         // GET: Posts
         public async Task<IActionResult> Index()
         {
-            // 從 Session 中取得 MemberID，並放入 ViewBag
-            var memberID = HttpContext.Session.GetString("MemberID");
-            ViewBag.SessionMemberID = memberID;
+            var postsWithRePostCount = await _context.Post
+                                   .Include(p => p.Member) // 包含 Member 資料
+                                   .Select(post => new PostWithRePostCountViewModel
+                                   {
+                                       Post = post,
+                                       RePostCount = _context.RePost.Count(r => r.PostID == post.PostID) // 計算留言數
+                                   })
+                                   .ToListAsync();
 
-            // 取得按 UpdatedAt 或 CreatedAt 排序的文章
-            var posts = await _context.Post
-                .OrderByDescending(p => p.UpdatedAt ?? p.CreatedAt)
-                .ToListAsync();
+            // 傳遞 session 的 MemberID 和 IsAdmin
+            var sessionMemberID = HttpContext.Session.GetString("MemberID");
+            ViewBag.SessionMemberID = sessionMemberID;
 
-            return View(posts);
+            var loggedInMember = await _context.Members.FirstOrDefaultAsync(m => m.MemberID == sessionMemberID);
+            ViewBag.IsAdmin = loggedInMember?.IsAdmin; // 設置 IsAdmin 狀態
+
+            return View(postsWithRePostCount);
         }
 
 
@@ -51,8 +59,28 @@ namespace SchoolProject_DB.Controllers
                 return NotFound();
             }
 
+            // 傳遞 session 的 MemberID 和 IsAdmin
+            var sessionMemberID = HttpContext.Session.GetString("MemberID");
+            ViewBag.SessionMemberID = sessionMemberID;
+
+            var loggedInMember = await _context.Members.FirstOrDefaultAsync(m => m.MemberID == sessionMemberID);
+            ViewBag.IsAdmin = loggedInMember?.IsAdmin; // 設置 IsAdmin 狀態
+
             return View(post);
         }
+
+        public async Task<IActionResult> GetImage(string id)
+        {
+            var post = await _context.Post.FindAsync(id); // 根據 PostID 查詢文章
+
+            if (post == null || post.Photos == null) // 確保文章存在且有圖片
+            {
+                return NotFound(); // 返回404 Not Found
+            }
+
+            return File(post.Photos, post.ImageType); // 返回文章的圖片
+        }
+
 
         // GET: Posts/Create
         public async Task<IActionResult> Create()
@@ -63,27 +91,20 @@ namespace SchoolProject_DB.Controllers
                                           .Select(p => p.PostID)
                                           .FirstOrDefaultAsync();
 
-            // 如果資料庫是空的，預設 PostID 從 00000001 開始
-            string newPostID = "00000001";
-            if (!string.IsNullOrEmpty(maxPostID))
-            {
-                // 轉換為數字，加 1 後轉回 8 位數字的字串
-                newPostID = (int.Parse(maxPostID) + 1).ToString("D8");
-            }
+            // 設定新的 PostID，若資料庫是空的，預設為 00000001
+            string newPostID = string.IsNullOrEmpty(maxPostID) ? "00000001" : (int.Parse(maxPostID) + 1).ToString("D8");
 
             // 將新的 PostID 存入 Session
             HttpContext.Session.SetString("NewPostID", newPostID);
-
-            // 將 newPostID 傳遞到視圖
             ViewBag.NewPostID = newPostID;
 
             // 確保當前使用者的 MemberID 已經在 Session 中
             var loggedInMemberID = HttpContext.Session.GetString("MemberID");
             if (string.IsNullOrEmpty(loggedInMemberID))
             {
-                // 如果沒有 MemberID，重定向到登入頁面
                 return RedirectToAction("Login", "Account");
             }
+
             ViewBag.NewMemberID = loggedInMemberID;
 
             return View();
@@ -92,42 +113,41 @@ namespace SchoolProject_DB.Controllers
         // POST: Posts/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("PostID,MemberID,PostTitle,Description,CreatedAt,UpdatedAt,Photos,ImageType")] Post post, IFormFile? photo)
+        public async Task<IActionResult> Create(Post post, IFormFile? uploadPhoto)
         {
-            // 從 Session 中取得 PostID 和 MemberID
-            if (string.IsNullOrEmpty(post.PostID))
+            // 設定 PostID 從 Session 獲取
+            post.PostID = HttpContext.Session.GetString("NewPostID");
+
+            // 檢查 PostID 和 MemberID 是否存在
+            if (string.IsNullOrEmpty(post.PostID) || string.IsNullOrEmpty(post.MemberID))
             {
-                post.PostID = HttpContext.Session.GetString("NewPostID");
-                if (string.IsNullOrEmpty(post.PostID))
-                {
-                    ModelState.AddModelError("", "PostID 未生成，請重新嘗試。");
-                    return View(post);
-                }
+                ModelState.AddModelError("", "PostID 或 MemberID 未生成，請重新嘗試。");
+                return View(post);
             }
 
-            var loggedInMemberID = HttpContext.Session.GetString("MemberID");
-            if (string.IsNullOrEmpty(loggedInMemberID))
+            //上傳照片的處理
+            if (uploadPhoto != null)
             {
-                return RedirectToAction("Login", "Account");
-            }
-
-            post.MemberID = loggedInMemberID;
-
-            // 處理圖片上傳
-            if (photo != null && (photo.ContentType == "image/jpeg" || photo.ContentType == "image/png"))
-            {
-                using (var memoryStream = new MemoryStream())
+                if (uploadPhoto.ContentType != "image/jpeg" && uploadPhoto.ContentType != "image/png")
                 {
-                    await photo.CopyToAsync(memoryStream);
-                    post.Photos = memoryStream.ToArray();
-                    post.ImageType = photo.ContentType;
+                    ViewData["Message"] = "僅能上傳JPG或PNG檔。";
+                    return View(post); //如果傳錯檔案格式就會反彈回去
                 }
+
+                //把檔案轉成二進位，並放入byte[]
+                var mem = new MemoryStream();
+
+                uploadPhoto.CopyTo(mem);
+
+                post.Photos = mem.ToArray(); //轉成陣列
+                post.ImageType = uploadPhoto.ContentType;
+
             }
 
             if (ModelState.IsValid)
             {
-                post.CreatedAt = DateTime.Now; // 設定當前時間
-                _context.Add(post);
+                post.CreatedAt = DateTime.Now; 
+                await _context.AddAsync(post); // 使用 AddAsync 方法
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index)); // 成功後回到文章列表頁面
             }
@@ -136,10 +156,8 @@ namespace SchoolProject_DB.Controllers
         }
 
 
-
-
         // 不准編輯文章
-        
+
 
         // GET: Posts/Delete/5 
         public async Task<IActionResult> Delete(string id)
@@ -165,15 +183,23 @@ namespace SchoolProject_DB.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
-            var post = await _context.Post.FindAsync(id);
+            var post = await _context.Post
+                .Include(p => p.RePost) // 加載與 Post 相關的 RePost
+                .FirstOrDefaultAsync(m => m.PostID == id);
+
             if (post != null)
             {
+                // 刪除所有與該文章相關的留言
+                _context.RePost.RemoveRange(post.RePost); // 刪除 RePost
+
+                // 刪除文章本身
                 _context.Post.Remove(post);
                 await _context.SaveChangesAsync();
             }
 
             return RedirectToAction(nameof(Index));
         }
+
 
         private bool PostExists(string id)
         {

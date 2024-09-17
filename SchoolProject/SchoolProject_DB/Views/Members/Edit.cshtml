@@ -23,7 +23,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label asp-for="Email" class="form-label">電子郵件、帳號</label>
-                        <input asp-for="Email" class="form-control" readonly="readonly" autocomplete="username" />
+                        <input asp-for="Email" class="form-control" autocomplete="username" />
                         <span asp-validation-for="Email" class="text-danger"></span>
                     </div>
                 </div>
@@ -46,7 +46,7 @@
                         <span asp-validation-for="UserName" class="text-danger"></span>
                     </div>
                 </div>
-                <!-- Lodestone ID輸入欄位 -->
+                <!-- Lodestone ID輸入欄位，設為只讀 -->
                 <div class="col-md-6">
                     <div class="form-group">
                         <label asp-for="LodestoneID" class="form-label">Lodestone</label>
@@ -56,14 +56,11 @@
                 </div>
             </div>
 
-
             <br />
             <br />
             <h2 style="display: inline;"><strong>角色資訊</strong></h2>
             <h5 style="display: inline; margin-left: 10px;">可按下方抓取按鈕自動讀取Lodestone資料</h5>
 
-
-            <!-- 以下欄位將由爬蟲自動填充 -->
             <div class="row mt-3">
                 <!-- 姓氏輸入欄位 -->
                 <div class="col-md-6">
@@ -107,7 +104,6 @@
                 <input asp-for="UpdatedAt" type="hidden" />
             </div>
 
-
             <br />
 
             <!-- 按鈕1和按鈕2: 用於抓取FirstName, FamilyName, DataCenter, ServerName和角色照片 -->
@@ -116,18 +112,11 @@
                 <button type="button" class="btn btn-outline-secondary w-50" id="fetchPhotoButton">抓取角色圖片</button>
             </div>
 
-                        
-           @*  <div class="btn-group" role="group" aria-label="Fetch buttons group">
-                
-                
-            </div> *@
-
-            <!-- 用於顯示錯誤訊息 -->
+            <!-- 顯示錯誤訊息 -->
             <div class="form-group mt-2">
                 <div id="infoErrorMessage" class="text-danger" style="display:none;"></div>
                 <div id="photoErrorMessage" class="text-danger" style="display:none;"></div>
             </div>
-
 
             <div class="row align-items-center mt-3">
                 <label asp-for="Photos" class="form-label"></label>
@@ -172,10 +161,8 @@
         <!-- 照片預覽部分 -->
         <div id="photoPreview"></div>
     </div>
-
-
-    
 </div>
+
 
 @section Scripts {
     <script>

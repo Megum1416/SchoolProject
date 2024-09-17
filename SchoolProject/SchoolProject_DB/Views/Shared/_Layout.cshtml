@@ -41,7 +41,6 @@
                             </a>
                             <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
                                 <li><a class="nav-link text-light" asp-area="" asp-controller="Members" asp-action="Admin">會員資料管理</a></li>
-                                <li><a class="nav-link text-light" asp-area="" asp-controller="#" asp-action="#">討論區管理</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -51,7 +50,7 @@
                         {
                             <div class="dropdown">
                                 <button class="btn btn-outline-warning dropdown-toggle me-3" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                                    歡迎！@Context.Session.GetString("UserName")
+                                    您好！@Context.Session.GetString("UserName")
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                     <li>

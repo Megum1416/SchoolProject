@@ -22,6 +22,5 @@ public partial class FollowList
     public DateTime? UpdatedAt { get; set; }
 
     public virtual Members Member { get; set; } = null!;
-
-    public virtual ICollection<Post> Post { get; set; } = new List<Post>();
+    
 }
