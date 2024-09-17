@@ -49,7 +49,12 @@ namespace SchoolProject_DB.Controllers
         // 顯示所有會員的列表
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Members.ToListAsync());
+            var members = await _context.Members.ToListAsync();
+
+            // 將 IsAdmin 狀態存入 ViewBag，檢查 Session 是否存在
+            ViewBag.IsAdmin = HttpContext.Session.GetString("IsAdmin");
+
+            return View(members);
         }
 
         // 顯示某個會員的詳細資料
@@ -60,44 +65,58 @@ namespace SchoolProject_DB.Controllers
             var members = await _context.Members.FirstOrDefaultAsync(m => m.MemberID == id);
             if (members == null) return NotFound();
 
+            // 從 Session 中取得 MemberID
+            var sessionMemberID = HttpContext.Session.GetString("MemberID");
+            ViewBag.SessionMemberID = sessionMemberID;
+
             return View(members);
         }
+
+
 
         // 進入會員創建頁面
         public async Task<IActionResult> Create()
         {
-            // 找到當前資料庫中最大的MemberID
+            // 找到當前資料庫中最大的 MemberID
             var maxMemberID = await _context.Members
                                             .OrderByDescending(m => m.MemberID)
                                             .Select(m => m.MemberID)
                                             .FirstOrDefaultAsync();
 
-            // 如果資料庫是空的，預設MemberID從00000001開始
+            // 如果資料庫是空的，預設 MemberID 從 00000001 開始
             string newMemberID = "00000001";
             if (!string.IsNullOrEmpty(maxMemberID))
             {
-                // 轉換為數字，加1後轉回8位數字的字串
+                // 轉換為數字，加 1 後轉回 8 位數字的字串
                 newMemberID = (int.Parse(maxMemberID) + 1).ToString("D8");
             }
 
-            // 將新的MemberID存入Cookie，有效期設置為短時間，例如1小時
-            Response.Cookies.Append("NewMemberID", newMemberID, new CookieOptions
-            {
-                Expires = DateTimeOffset.Now.AddHours(1)
-            });
+            // 將新的 MemberID 存入 Session
+            HttpContext.Session.SetString("NewMemberID", newMemberID);
+
+            // 將 newMemberID 傳遞到視圖
+            ViewBag.NewMemberID = newMemberID;
 
             return View();
         }
+
+
+
 
         // 當使用者提交會員創建表單時處理的動作
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("MemberID,Email,Password,UserName,LodestoneID,FirstName,FamilyName,DataCenter,ServerName,CreatedAt,UpdatedAt,Photos,ImageType")] Members members, IFormFile? uploadPhoto, string? PhotoUrl)
         {
+            // 如果MemberID未正確從表單接收，從Session中設置
             if (string.IsNullOrEmpty(members.MemberID))
             {
-                ModelState.AddModelError("", "MemberID未生成，請重新嘗試。");
-                return View(members);
+                members.MemberID = HttpContext.Session.GetString("NewMemberID");
+                if (string.IsNullOrEmpty(members.MemberID))
+                {
+                    ModelState.AddModelError("", "MemberID未生成，請重新嘗試。");
+                    return View(members);
+                }
             }
 
             // 檢查資料庫是否已經有相同的 LodestoneID
@@ -115,7 +134,9 @@ namespace SchoolProject_DB.Controllers
                 members.CreatedAt = DateTime.Now;
                 _context.Add(members);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+
+                // 成功後導向 Login 頁面
+                return RedirectToAction("Login", "Login");
             }
 
             return View(members);
@@ -225,7 +246,7 @@ namespace SchoolProject_DB.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("Password,UserName,FirstName,FamilyName,DataCenter,ServerName,Photos,ImageType")] Members members, IFormFile? uploadPhoto, string? PhotoUrl)
+        public async Task<IActionResult> Edit(string id, [Bind("MemberID,Password,UserName,FirstName,FamilyName,DataCenter,ServerName,Photos,ImageType")] Members members, IFormFile? uploadPhoto, string? PhotoUrl)
         {
             if (id != members.MemberID) return NotFound();
 
@@ -375,9 +396,32 @@ namespace SchoolProject_DB.Controllers
         }
 
 
-        private bool MembersExists(string id)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Delete(string id)
+        {
+            if (string.IsNullOrEmpty(id))
+            {
+                return NotFound(); // 如果ID為空，回傳404
+            }
+
+            var member = await _context.Members.FindAsync(id); // 查找對應的會員
+            if (member == null)
+            {
+                return NotFound(); // 如果會員不存在，回傳404
+            }
+
+            _context.Members.Remove(member); // 刪除該會員
+            await _context.SaveChangesAsync(); // 保存更改到資料庫
+
+            return RedirectToAction(nameof(Index)); // 刪除後重定向回列表頁
+        }
+
+        private bool MemberExists(string id)
         {
             return _context.Members.Any(e => e.MemberID == id);
         }
+
+
     }
 }

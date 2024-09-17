@@ -33,30 +33,26 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Members" asp-action="Index">會員一覽</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="#" asp-action="#">討論區</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Posts" asp-action="Index">討論區</a>
                         </li>
 
 
                     </ul>
 
                     <div class="d-flex align-items-center">
-                        @if (User.Identity.IsAuthenticated)
-
+                        @if (Context.Session.GetString("MemberID") != null)
                         {
                             <!-- 顯示登出按鈕 -->
                             <form asp-controller="Login" asp-action="Logout" method="post">
                                 <button type="submit" class="btn btn-outline-dark">登出</button>
                             </form>
                         }
-
                         else
-
                         {
                             <!-- 顯示登入按鈕 -->
                             <a class="btn btn-outline-dark" asp-controller="Login" asp-action="Login">登入</a>
                         }
                     </div>
-
 
                 </div>
             </div>

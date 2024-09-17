@@ -2,7 +2,7 @@
 
 @{
     ViewData["Title"] = $"{Model.FamilyName} {Model.FirstName} 的詳細資訊";
-    string cookieMemberID = Context.Request.Cookies["MemberID"];
+    string sessionMemberID = ViewBag.SessionMemberID; // 改為從 ViewBag 取得 Session 的 MemberID
 }
 
 <link href="~/css/site.css" rel="stylesheet" />
@@ -23,16 +23,19 @@
             </h1>
         </div>
 
-        @if (User.Identity.IsAuthenticated && cookieMemberID == Model.MemberID)
+        @if (ViewBag.SessionMemberID != null && ViewBag.SessionMemberID == Model.MemberID)
         {
+            <!-- 如果登入的使用者正在查看自己的資料，顯示編輯按鈕 -->
             <a asp-action="Edit" asp-route-id="@Model?.MemberID" class="btn btn-warning">編輯資料</a>
         }
-        else if (User.Identity.IsAuthenticated && cookieMemberID != Model.MemberID)
+        else if (ViewBag.SessionMemberID != null && ViewBag.SessionMemberID != Model.MemberID)
         {
+            <!-- 如果登入的使用者正在查看其他會員的資料，顯示追蹤按鈕 -->
             <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#confirmFollowModal">
                 <i id="follow-icon" class="bi bi-star fs-4"></i>
             </button>
         }
+
 
         <!-- Modal 視窗 -->
         <div class="modal fade" id="confirmFollowModal" tabindex="-1" aria-labelledby="confirmFollowModalLabel" aria-hidden="true">
@@ -89,6 +92,7 @@
         </div>
     </div>
 </div>
+
 
 <br />
 

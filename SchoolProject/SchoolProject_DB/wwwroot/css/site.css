@@ -24,7 +24,7 @@ body {
 
 
 
-/* styles-memberIndex.css */
+/* memberIndex 的 css */
 .memberIndex-image-container {
     position: relative;
     width: 100%;
@@ -71,14 +71,14 @@ body {
 }
 
 
-/*Detail的CSS*/
+/*Detail 圖片 的 CSS*/
 
 .rounded-image {
     border-radius: 5px; /* 設置圓角，您可以調整這個值來更改圓弧的大小 */
 }
 
 
-/*VCLevel的CSS*/
+/*VCLevel 的 CSS*/
 
 .LevelCategory {
     display: flex;

@@ -7,7 +7,7 @@
 <h1>@ViewData["Title"]</h1>
 
 <p>
-    <a asp-action="Create" class="btn btn-primary">Create New</a>
+    <a asp-action="Create" class="btn btn-primary">新增會員</a>
 </p>
 
 <style>
@@ -35,9 +35,8 @@
     </thead>
     <tbody class="text-center">
         @foreach (var item in Model)
-
         {
-            <tr>
+            <tr data-id="@item.MemberID">
                 <td>@Html.DisplayFor(modelItem => item.MemberID)</td>
                 <td>@Html.DisplayFor(modelItem => item.UserName)</td>
                 <td>@Html.DisplayFor(modelItem => item.LodestoneID)</td>
@@ -51,18 +50,23 @@
                     <input type="checkbox" class="admin-checkbox" data-id="@item.MemberID" @(item.IsAdmin ? "checked" : "") />
                 </td>
                 <td>
-                    <a asp-action="Details" asp-route-id="@item.MemberID" class="btn btn-info btn-sm">Details</a>
-                    <a asp-action="Delete" asp-route-id="@item.MemberID" class="btn btn-danger btn-sm">Delete</a>
+                    <a asp-action="Details" asp-route-id="@item.MemberID" class="btn btn-info btn-sm">詳細資料</a>
+
+                    <!-- 這裡是使用表單和確認彈窗 -->
+                    <form asp-action="Delete" method="post" onsubmit="return confirm('確定要刪除此會員嗎？此操作無法回復。')">
+                        <input type="hidden" name="id" value="@item.MemberID" />
+                        <input type="submit" value="刪除會員" class="btn btn-danger btn-sm" />
+                    </form>
                 </td>
             </tr>
         }
     </tbody>
 </table>
 
-<!-- Javascript to handle the checkbox click event -->
 @section Scripts {
     <script>
         $(document).ready(function () {
+            // 處理 IsAdmin 勾選框的變更事件
             $(".admin-checkbox").change(function () {
                 var memberId = $(this).data("id");
                 var isAdmin = $(this).is(":checked");

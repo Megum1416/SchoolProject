@@ -260,21 +260,11 @@
             $("#photoPreview").html(""); // 清空照片預覽
         });
 
-        // 當頁面載入時，從cookie中讀取MemberID，並設置到隱藏的欄位中
-        window.onload = function () {
-            var memberId = getCookie('NewMemberID');
-            if (memberId) {
-                document.getElementById('MemberID').value = memberId;
-            }
-        };
+        // 從 ViewBag 中獲取 newMemberID
+        var newMemberID = '@ViewBag.NewMemberID';
 
-        // 獲取Cookie的函數
-        function getCookie(name) {
-            let value = "; " + document.cookie;
-            let parts = value.split("; " + name + "=");
-            if (parts.length === 2) return parts.pop().split(";").shift();
-        }
-
+        // 在瀏覽器的控制台中顯示 newMemberID 的值
+        console.log("New MemberID generated: " + newMemberID);
     </script>
 }
 

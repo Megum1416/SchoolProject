@@ -3,8 +3,72 @@
   "WorkspaceRootPath": "F:\\SchoolProject\\SchoolProject\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{8477EE49-9633-4668-A54F-EB59FFC98C8E}|SchoolProject_DB\\SchoolProject_DB.csproj|f:\\schoolproject\\schoolproject\\schoolproject_db\\models\\post.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8477EE49-9633-4668-A54F-EB59FFC98C8E}|SchoolProject_DB\\SchoolProject_DB.csproj|solutionrelative:schoolproject_db\\models\\post.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8477EE49-9633-4668-A54F-EB59FFC98C8E}|SchoolProject_DB\\SchoolProject_DB.csproj|f:\\schoolproject\\schoolproject\\schoolproject_db\\views\\shared\\_layout-guest.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8477EE49-9633-4668-A54F-EB59FFC98C8E}|SchoolProject_DB\\SchoolProject_DB.csproj|solutionrelative:schoolproject_db\\views\\shared\\_layout-guest.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8477EE49-9633-4668-A54F-EB59FFC98C8E}|SchoolProject_DB\\SchoolProject_DB.csproj|f:\\schoolproject\\schoolproject\\schoolproject_db\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8477EE49-9633-4668-A54F-EB59FFC98C8E}|SchoolProject_DB\\SchoolProject_DB.csproj|solutionrelative:schoolproject_db\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8477EE49-9633-4668-A54F-EB59FFC98C8E}|SchoolProject_DB\\SchoolProject_DB.csproj|f:\\schoolproject\\schoolproject\\schoolproject_db\\views\\shared\\_layout-member.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8477EE49-9633-4668-A54F-EB59FFC98C8E}|SchoolProject_DB\\SchoolProject_DB.csproj|solutionrelative:schoolproject_db\\views\\shared\\_layout-member.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8477EE49-9633-4668-A54F-EB59FFC98C8E}|SchoolProject_DB\\SchoolProject_DB.csproj|f:\\schoolproject\\schoolproject\\schoolproject_db\\models\\schoolprojectcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8477EE49-9633-4668-A54F-EB59FFC98C8E}|SchoolProject_DB\\SchoolProject_DB.csproj|solutionrelative:schoolproject_db\\models\\schoolprojectcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8477EE49-9633-4668-A54F-EB59FFC98C8E}|SchoolProject_DB\\SchoolProject_DB.csproj|f:\\schoolproject\\schoolproject\\schoolproject_db\\views\\followlists\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8477EE49-9633-4668-A54F-EB59FFC98C8E}|SchoolProject_DB\\SchoolProject_DB.csproj|solutionrelative:schoolproject_db\\views\\followlists\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8477EE49-9633-4668-A54F-EB59FFC98C8E}|SchoolProject_DB\\SchoolProject_DB.csproj|f:\\schoolproject\\schoolproject\\schoolproject_db\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8477EE49-9633-4668-A54F-EB59FFC98C8E}|SchoolProject_DB\\SchoolProject_DB.csproj|solutionrelative:schoolproject_db\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8477EE49-9633-4668-A54F-EB59FFC98C8E}|SchoolProject_DB\\SchoolProject_DB.csproj|f:\\schoolproject\\schoolproject\\schoolproject_db\\controllers\\postscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8477EE49-9633-4668-A54F-EB59FFC98C8E}|SchoolProject_DB\\SchoolProject_DB.csproj|solutionrelative:schoolproject_db\\controllers\\postscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{8477EE49-9633-4668-A54F-EB59FFC98C8E}|SchoolProject_DB\\SchoolProject_DB.csproj|f:\\schoolproject\\schoolproject\\schoolproject_db\\controllers\\followlistscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8477EE49-9633-4668-A54F-EB59FFC98C8E}|SchoolProject_DB\\SchoolProject_DB.csproj|solutionrelative:schoolproject_db\\controllers\\followlistscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8477EE49-9633-4668-A54F-EB59FFC98C8E}|SchoolProject_DB\\SchoolProject_DB.csproj|f:\\schoolproject\\schoolproject\\schoolproject_db\\controllers\\memberscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8477EE49-9633-4668-A54F-EB59FFC98C8E}|SchoolProject_DB\\SchoolProject_DB.csproj|solutionrelative:schoolproject_db\\controllers\\memberscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8477EE49-9633-4668-A54F-EB59FFC98C8E}|SchoolProject_DB\\SchoolProject_DB.csproj|f:\\schoolproject\\schoolproject\\schoolproject_db\\views\\posts\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8477EE49-9633-4668-A54F-EB59FFC98C8E}|SchoolProject_DB\\SchoolProject_DB.csproj|solutionrelative:schoolproject_db\\views\\posts\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8477EE49-9633-4668-A54F-EB59FFC98C8E}|SchoolProject_DB\\SchoolProject_DB.csproj|f:\\schoolproject\\schoolproject\\schoolproject_db\\views\\posts\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8477EE49-9633-4668-A54F-EB59FFC98C8E}|SchoolProject_DB\\SchoolProject_DB.csproj|solutionrelative:schoolproject_db\\views\\posts\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8477EE49-9633-4668-A54F-EB59FFC98C8E}|SchoolProject_DB\\SchoolProject_DB.csproj|f:\\schoolproject\\schoolproject\\schoolproject_db\\views\\posts\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8477EE49-9633-4668-A54F-EB59FFC98C8E}|SchoolProject_DB\\SchoolProject_DB.csproj|solutionrelative:schoolproject_db\\views\\posts\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8477EE49-9633-4668-A54F-EB59FFC98C8E}|SchoolProject_DB\\SchoolProject_DB.csproj|f:\\schoolproject\\schoolproject\\schoolproject_db\\views\\posts\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8477EE49-9633-4668-A54F-EB59FFC98C8E}|SchoolProject_DB\\SchoolProject_DB.csproj|solutionrelative:schoolproject_db\\views\\posts\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8477EE49-9633-4668-A54F-EB59FFC98C8E}|SchoolProject_DB\\SchoolProject_DB.csproj|f:\\schoolproject\\schoolproject\\schoolproject_db\\models\\members.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8477EE49-9633-4668-A54F-EB59FFC98C8E}|SchoolProject_DB\\SchoolProject_DB.csproj|solutionrelative:schoolproject_db\\models\\members.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8477EE49-9633-4668-A54F-EB59FFC98C8E}|SchoolProject_DB\\SchoolProject_DB.csproj|f:\\schoolproject\\schoolproject\\schoolproject_db\\views\\members\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8477EE49-9633-4668-A54F-EB59FFC98C8E}|SchoolProject_DB\\SchoolProject_DB.csproj|solutionrelative:schoolproject_db\\views\\members\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8477EE49-9633-4668-A54F-EB59FFC98C8E}|SchoolProject_DB\\SchoolProject_DB.csproj|f:\\schoolproject\\schoolproject\\schoolproject_db\\views\\members\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8477EE49-9633-4668-A54F-EB59FFC98C8E}|SchoolProject_DB\\SchoolProject_DB.csproj|solutionrelative:schoolproject_db\\views\\members\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,19 +78,271 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 7,
+              "Title": "PostsController.cs",
+              "DocumentMoniker": "F:\\SchoolProject\\SchoolProject\\SchoolProject_DB\\Controllers\\PostsController.cs",
+              "RelativeDocumentMoniker": "SchoolProject_DB\\Controllers\\PostsController.cs",
+              "ToolTip": "F:\\SchoolProject\\SchoolProject\\SchoolProject_DB\\Controllers\\PostsController.cs",
+              "RelativeToolTip": "SchoolProject_DB\\Controllers\\PostsController.cs",
+              "ViewState": "AQIAAKQAAAAAAAAAAAAIwEQAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-16T09:18:49.084Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "MembersController.cs",
+              "DocumentMoniker": "F:\\SchoolProject\\SchoolProject\\SchoolProject_DB\\Controllers\\MembersController.cs",
+              "RelativeDocumentMoniker": "SchoolProject_DB\\Controllers\\MembersController.cs",
+              "ToolTip": "F:\\SchoolProject\\SchoolProject\\SchoolProject_DB\\Controllers\\MembersController.cs",
+              "RelativeToolTip": "SchoolProject_DB\\Controllers\\MembersController.cs",
+              "ViewState": "AQIAAIkAAAAAAAAAAAAqwKUBAAA/AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-16T09:40:26.613Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "F:\\SchoolProject\\SchoolProject\\SchoolProject_DB\\Views\\FollowLists\\Index.cshtml",
+              "RelativeDocumentMoniker": "SchoolProject_DB\\Views\\FollowLists\\Index.cshtml",
+              "ToolTip": "F:\\SchoolProject\\SchoolProject\\SchoolProject_DB\\Views\\FollowLists\\Index.cshtml",
+              "RelativeToolTip": "SchoolProject_DB\\Views\\FollowLists\\Index.cshtml",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-17T09:14:10.557Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "F:\\SchoolProject\\SchoolProject\\SchoolProject_DB\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "SchoolProject_DB\\Controllers\\HomeController.cs",
+              "ToolTip": "F:\\SchoolProject\\SchoolProject\\SchoolProject_DB\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "SchoolProject_DB\\Controllers\\HomeController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-17T08:28:26.048Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "FollowListsController.cs",
               "DocumentMoniker": "F:\\SchoolProject\\SchoolProject\\SchoolProject_DB\\Controllers\\FollowListsController.cs",
               "RelativeDocumentMoniker": "SchoolProject_DB\\Controllers\\FollowListsController.cs",
               "ToolTip": "F:\\SchoolProject\\SchoolProject\\SchoolProject_DB\\Controllers\\FollowListsController.cs",
               "RelativeToolTip": "SchoolProject_DB\\Controllers\\FollowListsController.cs",
-              "ViewState": "AQIAABcBAAAAAAAAAAAAADEBAABqAAAA",
+              "ViewState": "AQIAACcAAAAAAAAAAAAMwE4AAAAXAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-15T22:24:27.709Z",
+              "WhenOpened": "2024-09-17T09:12:13.301Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "F:\\SchoolProject\\SchoolProject\\SchoolProject_DB\\Views\\Posts\\Details.cshtml",
+              "RelativeDocumentMoniker": "SchoolProject_DB\\Views\\Posts\\Details.cshtml",
+              "ToolTip": "F:\\SchoolProject\\SchoolProject\\SchoolProject_DB\\Views\\Posts\\Details.cshtml",
+              "RelativeToolTip": "SchoolProject_DB\\Views\\Posts\\Details.cshtml",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAMwCoAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-17T09:04:28.799Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Delete.cshtml",
+              "DocumentMoniker": "F:\\SchoolProject\\SchoolProject\\SchoolProject_DB\\Views\\Posts\\Delete.cshtml",
+              "RelativeDocumentMoniker": "SchoolProject_DB\\Views\\Posts\\Delete.cshtml",
+              "ToolTip": "F:\\SchoolProject\\SchoolProject\\SchoolProject_DB\\Views\\Posts\\Delete.cshtml",
+              "RelativeToolTip": "SchoolProject_DB\\Views\\Posts\\Delete.cshtml",
+              "ViewState": "AQIAAB4AAAAAAAAAAAAAACoAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-17T09:03:37.497Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Post.cs",
+              "DocumentMoniker": "F:\\SchoolProject\\SchoolProject\\SchoolProject_DB\\Models\\Post.cs",
+              "RelativeDocumentMoniker": "SchoolProject_DB\\Models\\Post.cs",
+              "ToolTip": "F:\\SchoolProject\\SchoolProject\\SchoolProject_DB\\Models\\Post.cs",
+              "RelativeToolTip": "SchoolProject_DB\\Models\\Post.cs",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAuwCwAAAAqAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-17T09:02:49.821Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "F:\\SchoolProject\\SchoolProject\\SchoolProject_DB\\Views\\Posts\\Index.cshtml",
+              "RelativeDocumentMoniker": "SchoolProject_DB\\Views\\Posts\\Index.cshtml",
+              "ToolTip": "F:\\SchoolProject\\SchoolProject\\SchoolProject_DB\\Views\\Posts\\Index.cshtml",
+              "RelativeToolTip": "SchoolProject_DB\\Views\\Posts\\Index.cshtml",
+              "ViewState": "AQIAAB4AAAAAAAAAAAAAAA8AAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-17T09:01:32.444Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "SchoolProjectContext.cs",
+              "DocumentMoniker": "F:\\SchoolProject\\SchoolProject\\SchoolProject_DB\\Models\\SchoolProjectContext.cs",
+              "RelativeDocumentMoniker": "SchoolProject_DB\\Models\\SchoolProjectContext.cs",
+              "ToolTip": "F:\\SchoolProject\\SchoolProject\\SchoolProject_DB\\Models\\SchoolProjectContext.cs",
+              "RelativeToolTip": "SchoolProject_DB\\Models\\SchoolProjectContext.cs",
+              "ViewState": "AQIAACAAAAAAAAAAAAAcwB4AAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-17T08:13:26.233Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "F:\\SchoolProject\\SchoolProject\\SchoolProject_DB\\Views\\Posts\\Create.cshtml",
+              "RelativeDocumentMoniker": "SchoolProject_DB\\Views\\Posts\\Create.cshtml",
+              "ToolTip": "F:\\SchoolProject\\SchoolProject\\SchoolProject_DB\\Views\\Posts\\Create.cshtml",
+              "RelativeToolTip": "SchoolProject_DB\\Views\\Posts\\Create.cshtml",
+              "ViewState": "AQIAAE4AAAAAAAAAAAAAABIAAABTAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-16T20:05:15.846Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Members.cs",
+              "DocumentMoniker": "F:\\SchoolProject\\SchoolProject\\SchoolProject_DB\\Models\\Members.cs",
+              "RelativeDocumentMoniker": "SchoolProject_DB\\Models\\Members.cs",
+              "ToolTip": "F:\\SchoolProject\\SchoolProject\\SchoolProject_DB\\Models\\Members.cs",
+              "RelativeToolTip": "SchoolProject_DB\\Models\\Members.cs",
+              "ViewState": "AQIAABwAAAAAAAAAAAAUwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-17T08:09:10.88Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "FloatingWindowState": {
+        "Id": "e6e06e79-b0a6-4250-9204-5b5070808c00",
+        "Display": 1,
+        "X": 340,
+        "Y": 168,
+        "Width": 1585,
+        "Height": 793,
+        "WindowState": 0
+      },
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "_Layout-Guest.cshtml",
+              "DocumentMoniker": "F:\\SchoolProject\\SchoolProject\\SchoolProject_DB\\Views\\Shared\\_Layout-Guest.cshtml",
+              "RelativeDocumentMoniker": "SchoolProject_DB\\Views\\Shared\\_Layout-Guest.cshtml",
+              "ToolTip": "F:\\SchoolProject\\SchoolProject\\SchoolProject_DB\\Views\\Shared\\_Layout-Guest.cshtml",
+              "RelativeToolTip": "SchoolProject_DB\\Views\\Shared\\_Layout-Guest.cshtml",
+              "ViewState": "AQIAAC0AAAAAAAAAAAAAACMAAABqAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-16T17:09:57.022Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "F:\\SchoolProject\\SchoolProject\\SchoolProject_DB\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "SchoolProject_DB\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "F:\\SchoolProject\\SchoolProject\\SchoolProject_DB\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "SchoolProject_DB\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACMAAABZAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-16T17:06:08.636Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "_Layout-Member.cshtml",
+              "DocumentMoniker": "F:\\SchoolProject\\SchoolProject\\SchoolProject_DB\\Views\\Shared\\_Layout-Member.cshtml",
+              "RelativeDocumentMoniker": "SchoolProject_DB\\Views\\Shared\\_Layout-Member.cshtml",
+              "ToolTip": "F:\\SchoolProject\\SchoolProject\\SchoolProject_DB\\Views\\Shared\\_Layout-Member.cshtml",
+              "RelativeToolTip": "SchoolProject_DB\\Views\\Shared\\_Layout-Member.cshtml",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAACUAAABrAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-16T17:21:25.87Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "FloatingWindowState": {
+        "Id": "8ec17f8d-53b8-452b-8dc6-76b177dd5b4b",
+        "Display": 1,
+        "X": 1,
+        "Y": 1,
+        "Width": 1918,
+        "Height": 1030,
+        "WindowState": 2
+      },
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "F:\\SchoolProject\\SchoolProject\\SchoolProject_DB\\Views\\Members\\Details.cshtml",
+              "RelativeDocumentMoniker": "SchoolProject_DB\\Views\\Members\\Details.cshtml",
+              "ToolTip": "F:\\SchoolProject\\SchoolProject\\SchoolProject_DB\\Views\\Members\\Details.cshtml",
+              "RelativeToolTip": "SchoolProject_DB\\Views\\Members\\Details.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABkAAAAsAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-16T17:22:52.334Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "F:\\SchoolProject\\SchoolProject\\SchoolProject_DB\\Views\\Members\\Index.cshtml",
+              "RelativeDocumentMoniker": "SchoolProject_DB\\Views\\Members\\Index.cshtml",
+              "ToolTip": "F:\\SchoolProject\\SchoolProject\\SchoolProject_DB\\Views\\Members\\Index.cshtml",
+              "RelativeToolTip": "SchoolProject_DB\\Views\\Members\\Index.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-16T20:23:52.314Z",
               "EditorCaption": ""
             }
           ]
