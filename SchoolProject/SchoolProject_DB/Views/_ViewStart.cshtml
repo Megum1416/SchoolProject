@@ -1,18 +1,23 @@
 ﻿@{
-    Layout = "_Layout-Guest"; // 預設給訪客的Layout
-
-    // 檢查使用者是否已登入
-    if (User.Identity.IsAuthenticated) // 如果使用者已登入
+    // 判斷是否已登入
+    if (Context.Session.GetString("MemberID") != null)
     {
-        var isAdmin = User.Claims.FirstOrDefault(c => c.Type == "IsAdmin")?.Value; // 從Claims中取得IsAdmin的值
-
-        if (isAdmin == "True")
+        // 檢查是否為管理員
+        var isAdmin = Context.Session.GetString("IsAdmin");
+        if (isAdmin != null && isAdmin == "True")
         {
-            Layout = "_Layout"; // 管理員使用的Layout
+            // 使用管理員的 Layout
+            Layout = "_Layout";
         }
         else
         {
-            Layout = "_Layout-Member"; // 一般會員使用的Layout
+            // 使用會員的 Layout
+            Layout = "_Layout-Member";
         }
+    }
+    else
+    {
+        // 使用訪客的 Layout
+        Layout = "_Layout-Guest";
     }
 }

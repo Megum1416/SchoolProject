@@ -9,8 +9,7 @@
 <h1 class="alert alert-secondary text-center" role="alert">@ViewData["Title"]</h1>
 
 @* 只有管理者才能看到這個按鈕 *@
-@if (User.Identity.IsAuthenticated && User.Claims.FirstOrDefault(c => c.Type == "IsAdmin")?.Value == "True")
-
+@if (ViewBag.IsAdmin == "True")
 {
     <div class="text-end">
 

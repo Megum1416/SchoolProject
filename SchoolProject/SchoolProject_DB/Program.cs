@@ -4,26 +4,32 @@ using SchoolProject_DB.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-//6.1.4 在Program.cs加入使用appsettings.json中的連線字串程式碼
+// 在Program.cs加入使用appsettings.json中的連線字串程式碼
 builder.Services.AddDbContext<SchoolProjectContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("SchoolProjectConnection")));
 
 // 註冊 HttpClient 服務，用於爬蟲功能
 builder.Services.AddHttpClient();
 
-// 配置 Cookie-based Authentication
+// 設置 Session 支持
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(30); // 設置 Session 閒置過期時間
+    options.Cookie.HttpOnly = true; // 避免前端 JavaScript 訪問
+    options.Cookie.IsEssential = true; // 支持 GDPR 合規
+});
+
+// 配置身份驗證（Cookie 基於 HTTPS 的驗證）
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
     {
-        options.LoginPath = "/Login"; // 指定登入頁面的路徑
-        options.LogoutPath = "/Logout"; // 指定登出頁面的路徑
-        options.ExpireTimeSpan = TimeSpan.FromMinutes(30); // 設定閒置30分鐘過期
-        options.SlidingExpiration = true; // 啟用滑動過期
+        options.Cookie.SecurePolicy = CookieSecurePolicy.Always; // 確保 Cookie 僅在 HTTPS 上發送
     });
-
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddHttpContextAccessor();
 
 var app = builder.Build();
 
@@ -36,15 +42,13 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-// 啟用 Cookie-based Authentication
-app.UseAuthentication();
-app.UseAuthorization();
+app.UseSession(); // 確保 Session 在路由和授權中介軟體之前啟用
+app.UseAuthentication(); // 確保身份驗證啟用
+app.UseAuthorization(); // 啟用授權
 
 // 設定控制器路由
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
-
-
 
 app.Run();

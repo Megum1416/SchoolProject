@@ -22,33 +22,22 @@ namespace SchoolProject_DB.Controllers
         // GET: FollowLists/Index
         public async Task<IActionResult> Index()
         {
-            // 從 Cookie 中取得當前登入使用者的 MemberID
-            var currentUserId = Request.Cookies["MemberID"];
+            // 從 Session 中取得當前登入使用者的 MemberID
+            var currentUserId = HttpContext.Session.GetString("MemberID");
             if (string.IsNullOrEmpty(currentUserId))
             {
                 // 如果未找到 MemberID，跳轉至登入頁面
                 return RedirectToAction("Login", "LoginController");
             }
 
-            // 查詢當前使用者的追蹤名單
-            var followList = await _context.FollowList
-                .Where(f => f.MemberID == currentUserId) // 查詢會員A的追蹤名單
+            // 查詢當前使用者的追蹤名單，並根據 LodestoneID 取得對應的會員資料
+            var followedMembers = await _context.FollowList
+                .Where(f => f.MemberID == currentUserId)
+                .Join(_context.Members,
+                      follow => follow.LodestoneID,
+                      member => member.LodestoneID,
+                      (follow, member) => member) // 只選擇會員資料
                 .ToListAsync();
-
-            // 通過LodestoneID去Members表查詢對應的會員資料
-            var followedMembers = new List<Members>();
-
-            foreach (var follow in followList)
-            {
-                // 根據LodestoneID查詢會員B的資料
-                var member = await _context.Members
-                    .FirstOrDefaultAsync(m => m.LodestoneID == follow.LodestoneID);
-
-                if (member != null)
-                {
-                    followedMembers.Add(member);
-                }
-            }
 
             // 如果追蹤列表為空，顯示訊息
             if (!followedMembers.Any())
@@ -56,7 +45,7 @@ namespace SchoolProject_DB.Controllers
                 ViewBag.Message = "您目前尚未追蹤任何人。";
             }
 
-            return View(followedMembers); // 傳遞被追蹤的會員資料到視圖中
+            return View(followedMembers);
         }
 
 
@@ -176,7 +165,6 @@ namespace SchoolProject_DB.Controllers
          */
 
         //這裡的delete action比較適合給管理者在管理所有資料時使用的。
-
         // POST: FollowLists/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -207,11 +195,10 @@ namespace SchoolProject_DB.Controllers
             return _context.FollowList.Any(e => e.FollowID == id);
         }
 
-
-        // 從 Cookie 中取得當前使用者的 MemberID
+        // 從 Session 中取得當前使用者的 MemberID
         private string GetCurrentUserId()
         {
-            return Request.Cookies["MemberID"];
+            return HttpContext.Session.GetString("MemberID");
         }
 
         // 檢查會員是否存在
@@ -312,6 +299,7 @@ namespace SchoolProject_DB.Controllers
                 return Json(new { isFollowing = false });
             }
         }
+
 
     }
 }

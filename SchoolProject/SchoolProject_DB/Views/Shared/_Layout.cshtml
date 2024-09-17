@@ -33,7 +33,7 @@
                             <a class="nav-link text-light" asp-area="" asp-controller="FollowLists" asp-action="Index">追隨名單</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="#" asp-action="#">討論區</a>
+                            <a class="nav-link text-light" asp-area="" asp-controller="Posts" asp-action="Index">討論區</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -47,17 +47,26 @@
                     </ul>
 
                     <div class="d-flex align-items-center">
-                        @if (User.Identity.IsAuthenticated)
-
+                        @if (Context.Session.GetString("MemberID") != null)
                         {
+                            <div class="dropdown">
+                                <button class="btn btn-outline-warning dropdown-toggle me-3" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                    歡迎！@Context.Session.GetString("UserName")
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <li>
+                                        <a class="dropdown-item" asp-controller="Members" asp-action="Details" asp-route-id="@Context.Session.GetString("MemberID")">
+                                            個人資訊
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
                             <!-- 顯示登出按鈕 -->
                             <form asp-controller="Login" asp-action="Logout" method="post">
                                 <button type="submit" class="btn btn-outline-light">登出</button>
                             </form>
                         }
-
                         else
-
                         {
                             <!-- 顯示登入按鈕 -->
                             <a class="btn btn-outline-dark" asp-controller="Login" asp-action="Login">登入</a>

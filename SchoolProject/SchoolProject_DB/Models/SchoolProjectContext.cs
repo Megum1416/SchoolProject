@@ -105,27 +105,28 @@ public partial class SchoolProjectContext : DbContext
                 .HasMaxLength(8)
                 .IsUnicode(false)
                 .IsFixedLength();
+
             entity.Property(e => e.CreatedAt).HasColumnType("datetime");
+
             entity.Property(e => e.Description).HasMaxLength(250);
-            entity.Property(e => e.FollowID)
-                .HasMaxLength(8)
-                .IsUnicode(false)
-                .IsFixedLength();
+
+            // 已移除 FollowID 欄位及其設定
+
             entity.Property(e => e.MemberID)
                 .HasMaxLength(8)
                 .IsUnicode(false)
                 .IsFixedLength();
+
             entity.Property(e => e.PostTitle).HasMaxLength(30);
 
-            entity.HasOne(d => d.Follow).WithMany(p => p.Post)
-                .HasForeignKey(d => d.FollowID)
-                .HasConstraintName("FK__Post__FollowID__3F466844");
+            // 已移除與 Follow 表的外鍵關聯
 
             entity.HasOne(d => d.Member).WithMany(p => p.Post)
                 .HasForeignKey(d => d.MemberID)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__Post__MemberID__3E52440B");
         });
+
 
         modelBuilder.Entity<RePost>(entity =>
         {
