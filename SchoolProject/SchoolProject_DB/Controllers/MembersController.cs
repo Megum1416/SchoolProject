@@ -435,6 +435,12 @@ namespace SchoolProject_DB.Controllers
 
             _context.FollowList.RemoveRange(followLists); // 刪除追蹤相關的記錄
 
+            // 刪除該會員的Post紀錄
+            var posts = await _context.Post
+                .Where(p => p.MemberID == member.MemberID)
+                .ToListAsync();
+            _context.Post.RemoveRange(posts); // 刪除該會員的所有Post記錄
+
             // 刪除該會員
             _context.Members.Remove(member);
             await _context.SaveChangesAsync(); // 保存更改到資料庫

@@ -5,11 +5,12 @@
     ViewData["Title"] = "首頁";
 }
 
-<h1 class="alert alert-secondary text-center" role="alert">最新的 Final Fantasy XIV News</h1>
 
 @if (latestTopics != null && latestTopics.Count > 0)
 
 {
+    <h1 class="alert alert-secondary text-center" role="alert">最新的 Final Fantasy XIV News</h1>
+
     <div class="row">
         @for (int i = 0; i < latestTopics.Count; i++)
 
@@ -40,7 +41,8 @@
 }
 
 else
-
 {
-    <p>無法獲取最新新聞資訊。</p>
+    <div class="text-center">
+        <img src="~/images/images2.gif" alt="無法獲取最新新聞資訊" class="text-center" width="1290" />
+    </div>
 }

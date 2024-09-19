@@ -15,7 +15,8 @@ create table Members(
 	CreatedAt datetime not null,
 	UpdatedAt datetime,
 	Photos varbinary(MAX),
-	ImageType nvarchar(MAX)
+	ImageType nvarchar(MAX),
+	IsAdmin bit,
 	primary key(MemberID)
 )
 
@@ -24,6 +25,7 @@ create table FollowList(
 	MemberID char(8) not null , --追隨者
 	LodestoneID char(8) not null , --被追隨者
 	CreatedAt datetime not null,
+	UpdatedAt datetime,
 	primary key(FollowID)
 )
 

@@ -1,10 +1,10 @@
 ﻿@model SchoolProject_DB.Models.Post
 
 @{
-    ViewData["Title"] = "新增文章";
+    ViewData["Title"] = "新增留言";
 }
 
-<h2 style="display: inline;"><strong>@ViewData["Title"]</strong></h2>
+<h2 class="alert alert-secondary text-center"><strong>@ViewData["Title"]</strong></h2>
 
 <hr />
 
@@ -14,17 +14,12 @@
         <form asp-action="Create" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-            <!-- PostID 輸入欄位 -->
-            <div class="mb-3">
-                <label asp-for="PostID" class="form-label">文章 ID</label>
-                <input type="text" asp-for="PostID" class="form-control" value="@ViewBag.NewPostID" readonly />
-            </div>
+            <!-- PostID 隱藏欄位 -->
+            <input type="hidden" asp-for="PostID" value="@ViewBag.NewPostID" />
 
-            <!-- MemberID 輸入欄位 -->
-            <div class="mb-3">
-                <label asp-for="MemberID" class="form-label">會員 ID</label>
-                <input type="text" asp-for="MemberID" class="form-control" value="@ViewBag.NewMemberID" readonly />
-            </div>
+            <!-- MemberID 隱藏欄位 -->
+            <input type="hidden" asp-for="MemberID" value="@ViewBag.NewMemberID" />
+
 
             <!-- 標題輸入欄位 -->
             <div class="mb-3">

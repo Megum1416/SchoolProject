@@ -125,6 +125,26 @@
       "PackagePath": "staticwebassets\\images\\default-photo.JPG"
     },
     {
+      "Id": "F:\\SchoolProject\\SchoolProject\\SchoolProject_DB\\wwwroot\\images\\home.png",
+      "PackagePath": "staticwebassets\\images\\home.png"
+    },
+    {
+      "Id": "F:\\SchoolProject\\SchoolProject\\SchoolProject_DB\\wwwroot\\images\\images.gif",
+      "PackagePath": "staticwebassets\\images\\images.gif"
+    },
+    {
+      "Id": "F:\\SchoolProject\\SchoolProject\\SchoolProject_DB\\wwwroot\\images\\images2.gif",
+      "PackagePath": "staticwebassets\\images\\images2.gif"
+    },
+    {
+      "Id": "F:\\SchoolProject\\SchoolProject\\SchoolProject_DB\\wwwroot\\images\\logo.png",
+      "PackagePath": "staticwebassets\\images\\logo.png"
+    },
+    {
+      "Id": "F:\\SchoolProject\\SchoolProject\\SchoolProject_DB\\wwwroot\\images\\placeholder.png",
+      "PackagePath": "staticwebassets\\images\\placeholder.png"
+    },
+    {
       "Id": "F:\\SchoolProject\\SchoolProject\\SchoolProject_DB\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

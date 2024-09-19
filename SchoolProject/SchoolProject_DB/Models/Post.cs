@@ -20,7 +20,7 @@ public partial class Post
 
     [Required(ErrorMessage = "必填！")] //在表單上會自動加上驗證器
     [StringLength(30, ErrorMessage = "最多只可輸入30字")]
-    [Display(Name = "文章標題")]
+    [Display(Name = "標題")]
     public string PostTitle { get; set; } = null!;
 
     [Required(ErrorMessage = "必填！")]
@@ -39,7 +39,7 @@ public partial class Post
     [Display(Name = "更新日期")]
     public DateTime? UpdatedAt { get; set; }
 
-    [Display(Name = "照片")]
+    [Display(Name = "上傳圖片")]
     public byte[]? Photos { get; set; }
 
     public string? ImageType { get; set; }

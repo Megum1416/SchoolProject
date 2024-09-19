@@ -13,5 +13,5 @@ public partial class RePost
 
     public DateTime CreatedAt { get; set; }
 
-    public virtual Post Post { get; set; } = null!;
+    public virtual Post? Post { get; set; } = null!;
 }

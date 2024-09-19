@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<SchoolProject_DB.ViewModels.PostWithRePostCountViewModel>
 
 @{
-    ViewData["Title"] = "討論區";
+    ViewData["Title"] = "留言區";
     string sessionMemberID = ViewBag.SessionMemberID; // 從 ViewBag 取得 Session 的 MemberID
 }
 
@@ -15,53 +15,48 @@
     </div>
 }
 <br />
-<table class="table table-hover table-bordered align-middle">
-    <thead class="thead-dark text-center table-light">
-        <tr>
-            <th style="width: 60%;">標題</th> 
-            <th style="width: 8%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">發文者</th> 
-            <th style="width: 7%;">留言數</th> 
-            <th style="width: 13%;">更新時間</th>
-            <th>動作</th>
-        </tr>
-    </thead>
-    <tbody>
+<div class="container">
+    <div class="row">
         @foreach (var item in Model)
         {
-            <tr>
-                <!-- 顯示文章標題 -->
-                <td class="ps-4">
-                    @Html.DisplayFor(modelItem => item.Post.PostTitle)
-                </td>
-                <!-- 顯示發文者的 UserName -->
-                <td class="text-center">
-                    @item.Post.Member?.UserName
-                </td>
-                <!-- 顯示留言數 -->
-                <td class="text-center">
-                    @item.RePostCount
-                </td>
-                <!-- 顯示 UpdatedAt 或 CreatedAt -->
-                <td class="text-center">
-                    @if (item.Post.UpdatedAt.HasValue)
+            <div class="col-12 col-md-6 col-xl-3 px-0">
+                <div class="card h-100">
+                    @if (item.Post.Photos != null && item.Post.ImageType != null)
                     {
-                        @item.Post.UpdatedAt?.ToString("yyyy/MM/dd HH:mm")
+                        <img src="@Url.Action("GetImage", "Posts", new { id = item.Post.PostID })" class="card-img-top" alt="Post Image" style="height: 300px; object-fit: cover; width: 100%;">
                     }
                     else
                     {
-                        @item.Post.CreatedAt.ToString("yyyy/MM/dd HH:mm")
+                        <img src="/images/placeholder.png" class="card-img-top" alt="Post Image" style="height: 300px; object-fit: cover; width: 100%;">
                     }
-                </td>
-                <td class="text-center">
-                    <a asp-action="Details" asp-route-id="@item.Post.PostID" class="btn btn-outline-success">查看</a>
-                    @if (ViewBag.IsAdmin == true) // 檢查是否為管理員
-                    {
-                        <form asp-action="Delete" asp-route-id="@item.Post.PostID" method="post" style="display:inline;">
-                            <button type="submit" class="btn btn-outline-danger" onclick="return confirm('確定要刪除這篇文章嗎？');">刪除</button>
-                        </form>
-                    }
-                </td>
-            </tr>
+
+                    <!-- 卡片內文 -->
+                    <div class="card-body">
+                        <h5 class="card-title text-center">@Html.DisplayFor(modelItem => item.Post.PostTitle)</h5>
+                    </div>
+                    <div>
+                        <p class="card-text text-end text-muted mt-auto me-2">
+                            @if (item.Post.UpdatedAt.HasValue)
+                            {
+                                @item.Post.UpdatedAt?.ToString("yyyy/MM/dd hh:mm tt")
+                            }
+                            else
+                            {
+                                @item.Post.CreatedAt.ToString("yyyy/MM/dd hh:mm tt")
+                            }
+                            &nbsp;by
+                            <a asp-controller="Members" asp-action="Details" asp-route-id="@item.Post.Member.MemberID" class="text-dark text-decoration-none">
+                                @Html.DisplayFor(modelItem => item.Post.Member.UserName)
+                            </a>
+                        </p>
+                    </div>
+
+                    <!-- 卡片頁腳，包含查看按鈕 -->
+                    <div class="card-footer text-center">
+                        <a asp-action="Details" asp-route-id="@item.Post.PostID" class="btn btn-outline-success  w-100">查看文章</a>
+                    </div>
+                </div>
+            </div>
         }
-    </tbody>
-</table>
+    </div>
+</div>

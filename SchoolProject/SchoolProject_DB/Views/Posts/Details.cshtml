@@ -4,13 +4,9 @@
     ViewData["Title"] = Model.PostTitle;
 }
 
-
-
 <div class="d-flex justify-content-center">
     <div class="card" style="width: 50rem;">
         <h1 class="alert alert-warning text-center" role="alert">@Html.DisplayFor(model => model.PostTitle)</h1>
-
-        <br />
 
         @if (Model.Photos != null && Model.ImageType != null)
         {
@@ -31,7 +27,6 @@
 
             <hr />
 
-            
             <div class="mb-2 mt-3">
                 @if (ViewBag.IsAdmin == true) // 檢查是否為管理員
                 {
@@ -49,9 +44,6 @@
                 }
             </div>
 
-
-
         </div>
     </div>
 </div>
-
