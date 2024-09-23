@@ -7914,19 +7914,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\lisa9\\.nuget\\packages\\": {}
+    "C:\\Users\\C50121\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\SchoolProject\\SchoolProject\\SchoolProject_DB\\SchoolProject_DB.csproj",
+      "projectUniqueName": "D:\\GitHub\\SchoolProject\\SchoolProject\\SchoolProject_DB\\SchoolProject_DB.csproj",
       "projectName": "SchoolProject_DB",
-      "projectPath": "F:\\SchoolProject\\SchoolProject\\SchoolProject_DB\\SchoolProject_DB.csproj",
-      "packagesPath": "C:\\Users\\lisa9\\.nuget\\packages\\",
-      "outputPath": "F:\\SchoolProject\\SchoolProject\\SchoolProject_DB\\obj\\",
+      "projectPath": "D:\\GitHub\\SchoolProject\\SchoolProject\\SchoolProject_DB\\SchoolProject_DB.csproj",
+      "packagesPath": "C:\\Users\\C50121\\.nuget\\packages\\",
+      "outputPath": "D:\\GitHub\\SchoolProject\\SchoolProject\\SchoolProject_DB\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\lisa9\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\C50121\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -7996,7 +7996,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

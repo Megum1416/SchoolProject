@@ -17,135 +17,135 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = SchoolProject_DB
 build_property.RootNamespace = SchoolProject_DB
-build_property.ProjectDir = F:\SchoolProject\SchoolProject\SchoolProject_DB\
+build_property.ProjectDir = D:\GitHub\SchoolProject\SchoolProject\SchoolProject_DB\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = F:\SchoolProject\SchoolProject\SchoolProject_DB
+build_property.MSBuildProjectDirectory = D:\GitHub\SchoolProject\SchoolProject\SchoolProject_DB
 build_property._RazorSourceGeneratorDebug = 
 
-[F:/SchoolProject/SchoolProject/SchoolProject_DB/Views/FollowLists/Create.cshtml]
+[D:/GitHub/SchoolProject/SchoolProject/SchoolProject_DB/Views/FollowLists/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9sbG93TGlzdHNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/SchoolProject/SchoolProject/SchoolProject_DB/Views/FollowLists/Delete.cshtml]
+[D:/GitHub/SchoolProject/SchoolProject/SchoolProject_DB/Views/FollowLists/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9sbG93TGlzdHNcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/SchoolProject/SchoolProject/SchoolProject_DB/Views/FollowLists/Details.cshtml]
+[D:/GitHub/SchoolProject/SchoolProject/SchoolProject_DB/Views/FollowLists/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9sbG93TGlzdHNcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/SchoolProject/SchoolProject/SchoolProject_DB/Views/FollowLists/Edit.cshtml]
+[D:/GitHub/SchoolProject/SchoolProject/SchoolProject_DB/Views/FollowLists/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9sbG93TGlzdHNcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/SchoolProject/SchoolProject/SchoolProject_DB/Views/FollowLists/Index.cshtml]
+[D:/GitHub/SchoolProject/SchoolProject/SchoolProject_DB/Views/FollowLists/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9sbG93TGlzdHNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/SchoolProject/SchoolProject/SchoolProject_DB/Views/Home/Index.cshtml]
+[D:/GitHub/SchoolProject/SchoolProject/SchoolProject_DB/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/SchoolProject/SchoolProject/SchoolProject_DB/Views/Home/Privacy.cshtml]
+[D:/GitHub/SchoolProject/SchoolProject/SchoolProject_DB/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/SchoolProject/SchoolProject/SchoolProject_DB/Views/Login/Login.cshtml]
+[D:/GitHub/SchoolProject/SchoolProject/SchoolProject_DB/Views/Login/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cTG9naW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/SchoolProject/SchoolProject/SchoolProject_DB/Views/Members/Admin.cshtml]
+[D:/GitHub/SchoolProject/SchoolProject/SchoolProject_DB/Views/Members/Admin.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVtYmVyc1xBZG1pbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/SchoolProject/SchoolProject/SchoolProject_DB/Views/Members/Create.cshtml]
+[D:/GitHub/SchoolProject/SchoolProject/SchoolProject_DB/Views/Members/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVtYmVyc1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/SchoolProject/SchoolProject/SchoolProject_DB/Views/Members/Delete.cshtml]
+[D:/GitHub/SchoolProject/SchoolProject/SchoolProject_DB/Views/Members/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVtYmVyc1xEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/SchoolProject/SchoolProject/SchoolProject_DB/Views/Members/Details.cshtml]
+[D:/GitHub/SchoolProject/SchoolProject/SchoolProject_DB/Views/Members/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVtYmVyc1xEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/SchoolProject/SchoolProject/SchoolProject_DB/Views/Members/Edit.cshtml]
+[D:/GitHub/SchoolProject/SchoolProject/SchoolProject_DB/Views/Members/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVtYmVyc1xFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/SchoolProject/SchoolProject/SchoolProject_DB/Views/Members/Index.cshtml]
+[D:/GitHub/SchoolProject/SchoolProject/SchoolProject_DB/Views/Members/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVtYmVyc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/SchoolProject/SchoolProject/SchoolProject_DB/Views/Posts/Create.cshtml]
+[D:/GitHub/SchoolProject/SchoolProject/SchoolProject_DB/Views/Posts/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9zdHNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/SchoolProject/SchoolProject/SchoolProject_DB/Views/Posts/Delete.cshtml]
+[D:/GitHub/SchoolProject/SchoolProject/SchoolProject_DB/Views/Posts/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9zdHNcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/SchoolProject/SchoolProject/SchoolProject_DB/Views/Posts/Details.cshtml]
+[D:/GitHub/SchoolProject/SchoolProject/SchoolProject_DB/Views/Posts/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9zdHNcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/SchoolProject/SchoolProject/SchoolProject_DB/Views/Posts/Index.cshtml]
+[D:/GitHub/SchoolProject/SchoolProject/SchoolProject_DB/Views/Posts/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9zdHNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/SchoolProject/SchoolProject/SchoolProject_DB/Views/RePosts/Create.cshtml]
+[D:/GitHub/SchoolProject/SchoolProject/SchoolProject_DB/Views/RePosts/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVQb3N0c1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/SchoolProject/SchoolProject/SchoolProject_DB/Views/RePosts/Delete.cshtml]
+[D:/GitHub/SchoolProject/SchoolProject/SchoolProject_DB/Views/RePosts/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVQb3N0c1xEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/SchoolProject/SchoolProject/SchoolProject_DB/Views/RePosts/Details.cshtml]
+[D:/GitHub/SchoolProject/SchoolProject/SchoolProject_DB/Views/RePosts/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVQb3N0c1xEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/SchoolProject/SchoolProject/SchoolProject_DB/Views/RePosts/Edit.cshtml]
+[D:/GitHub/SchoolProject/SchoolProject/SchoolProject_DB/Views/RePosts/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVQb3N0c1xFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/SchoolProject/SchoolProject/SchoolProject_DB/Views/RePosts/Index.cshtml]
+[D:/GitHub/SchoolProject/SchoolProject/SchoolProject_DB/Views/RePosts/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVQb3N0c1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/SchoolProject/SchoolProject/SchoolProject_DB/Views/Shared/Components/VCLevels/Default.cshtml]
+[D:/GitHub/SchoolProject/SchoolProject/SchoolProject_DB/Views/Shared/Components/VCLevels/Default.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcVkNMZXZlbHNcRGVmYXVsdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/SchoolProject/SchoolProject/SchoolProject_DB/Views/Shared/Error.cshtml]
+[D:/GitHub/SchoolProject/SchoolProject/SchoolProject_DB/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/SchoolProject/SchoolProject/SchoolProject_DB/Views/Shared/_ValidationScriptsPartial.cshtml]
+[D:/GitHub/SchoolProject/SchoolProject/SchoolProject_DB/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/SchoolProject/SchoolProject/SchoolProject_DB/Views/_ViewImports.cshtml]
+[D:/GitHub/SchoolProject/SchoolProject/SchoolProject_DB/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/SchoolProject/SchoolProject/SchoolProject_DB/Views/_ViewStart.cshtml]
+[D:/GitHub/SchoolProject/SchoolProject/SchoolProject_DB/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/SchoolProject/SchoolProject/SchoolProject_DB/Views/Shared/_Layout-Guest.cshtml]
+[D:/GitHub/SchoolProject/SchoolProject/SchoolProject_DB/Views/Shared/_Layout-Guest.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQtR3Vlc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-ed4ksp1k5c
 
-[F:/SchoolProject/SchoolProject/SchoolProject_DB/Views/Shared/_Layout-Member.cshtml]
+[D:/GitHub/SchoolProject/SchoolProject/SchoolProject_DB/Views/Shared/_Layout-Member.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQtTWVtYmVyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = b-r7oe20jmmr
 
-[F:/SchoolProject/SchoolProject/SchoolProject_DB/Views/Shared/_Layout.cshtml]
+[D:/GitHub/SchoolProject/SchoolProject/SchoolProject_DB/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-dnwc3yiwhc
